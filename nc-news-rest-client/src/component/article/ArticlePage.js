@@ -20,7 +20,7 @@ class ArticlePage extends Component {
    <div>
     {loading && <p>...Loading</p>}
     {error && <p>error: {error}</p>}
-    <h3>Article (id:{id}) and Comments </h3>
+    <h4>Article (id:{id}) and Comments </h4>
     <Article {...article} />
     <hr />
     {/* <AddComment id={id} />

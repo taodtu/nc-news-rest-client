@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './component/Navigation'
 import Header from './component/Header';
-import { Router } from '@reach/router';
+import { Link, Router } from '@reach/router';
 import ArticleList from './component/article/ArticleList';
 import ArticlePage from './component/article/ArticlePage'
 import { Select, MenuItem } from '@material-ui/core';
@@ -32,10 +32,12 @@ class App extends Component {
           <MenuItem value="cooljmessy">cooljmessy</MenuItem>
           <MenuItem value="weegembump">weegembump</MenuItem>
         </Select>
+        <Link to={`/users/${currentUser}`} className="title-link">User</Link>
         <div className="nav" ><Navigation /></div>
 
         <Router>
           <ArticleList path="/topics/:topic" />
+          <ArticleList path="/users/:author" />
           <ArticleList path="/" />
           <ArticlePage path="/articles/:id" />
         </Router>
