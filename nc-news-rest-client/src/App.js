@@ -3,21 +3,41 @@ import Navigation from './component/Navigation'
 import Header from './component/Header';
 import { Router } from '@reach/router';
 import ArticleList from './component/article/ArticleList';
-
+import ArticlePage from './component/article/ArticlePage'
+import { Select, MenuItem } from '@material-ui/core';
 import './App.css';
 
 class App extends Component {
   state = {
     currentUser: "jessjelly"
   }
+  handleChange = ({ target }) => {
+    const { value } = target;
+    this.setState({
+      currentUser: value
+    })
+  }
   render() {
+    const { currentUser } = this.state;
     return (
       <div className="App">
         <Header />
-        <Navigation />
+        <label>Current User:</label>
+        <Select value={currentUser} autoWidth={true} onChange={this.handleChange}
+        >
+          <MenuItem value="jessjelly">jessjelly</MenuItem>
+          <MenuItem value="tickle122">tickle122</MenuItem>
+          <MenuItem value="grumpy19">grumpy19</MenuItem>
+          <MenuItem value="happyamy2016">happyamy2016</MenuItem>
+          <MenuItem value="cooljmessy">cooljmessy</MenuItem>
+          <MenuItem value="weegembump">weegembump</MenuItem>
+        </Select>
+        <div className="nav" ><Navigation /></div>
+
         <Router>
           <ArticleList path="/topics/:topic" />
           <ArticleList path="/" />
+          <ArticlePage path="/articles/:id" />
         </Router>
 
       </div>

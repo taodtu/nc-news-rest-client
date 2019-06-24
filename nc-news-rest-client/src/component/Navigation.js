@@ -36,6 +36,8 @@ class Navigation extends Component {
   return (
    <nav >
     <Link to={`/`} className="title-link">Home</Link>
+    {loading && <p>...Loading</p>}
+    {error && <p>error: {error}</p>}
     {topics && topics.map(topic => <Link to={`/topics/${topic.slug}`} key={topic.slug} className="title-link">{topic.slug}</Link>
     )}
    </nav>
