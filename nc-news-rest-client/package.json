@@ -1,5 +1,5 @@
 {
-  "name": "nc-news-react-apollo-graphql-client",
+  "name": "nc-news-rest-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
