@@ -8,6 +8,10 @@ export const getTopics = () => {
  return request.get('/topics').then(({ data }) => data.topics)
 };
 
+export const getArticles = (topic) => {
+ return request.get(`/articles`, { params: { topic } }).then(({ data }) => data.articles)
+};
+
 export const getUser = (username) => {
  return request.get(`/users/${username}`).then(({ data }) => data.user)
 };
@@ -28,8 +32,8 @@ export const getCommentsByArticle = (article_id) => {
  return request.get(`/articles/${article_id}/comments`).then(({ data }) => data.comments)
 };
 
-export const addStudent = (student) => {
- return request.post(`/students`, student).then(response => response)
+export const updateComment = (id, body) => {
+ return request.patch(`/comments/${id}`, { ...body }).then(({ data }) => data.comment)
 };
 
 export const deleteStudent = (id) => {
