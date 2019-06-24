@@ -36,8 +36,8 @@ export const updateComment = (id, body) => {
  return request.patch(`/comments/${id}`, { ...body }).then(({ data }) => data.comment)
 };
 
-export const deleteStudent = (id) => {
- return request.delete(`/students/${id}`).then(response => response)
+export const deleteComment = (id) => {
+ return request.delete(`/comments/${id}`).then(response => response)
 };
 
 export const updateStudent = (id, progress) => {

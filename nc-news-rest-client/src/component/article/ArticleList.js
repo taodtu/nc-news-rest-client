@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getArticles } from '../api';
+import ArticleItem from './ArticleItem';
 
 const INITIAL_STATE = {
  articles: null,
@@ -17,21 +18,27 @@ class ArticleList extends Component {
    loading: true
   });
   getArticles(this.props.topic)
-   .then(articles => {
+   .then(({ articles }) => {
     this.setState({
-     ...this.state,
-     articles
+     ...INITIAL_STATE,
+     articles,
+    })
+   })
+   .catch(error => {
+    this.setState({
+     ...INITIAL_STATE,
+     error,
     })
    })
  }
 
  render() {
-  const { articles } = this.state
+  const { articles, loading, error } = this.state
   return (
    <div>
-    {articles.map(article => (
-     <ArticleItem key={article.article_id} />
-    ))}
+    {loading && <p>...Loading</p>}
+    {error && <p>error: {error}</p>}
+    {articles && articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
    </div>
   );
  }

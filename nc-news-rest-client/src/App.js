@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Navigation from './component/Navigation'
 import Header from './component/Header';
+import { Router } from '@reach/router';
+import ArticleList from './component/article/ArticleList';
 
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
+class App extends Component {
+  state = {
+    currentUser: "jessjelly"
+  }
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Navigation />
+        <Router>
+          <ArticleList path="/" />
+          {/* <Alist path="/topics/:topic" /> */}
+        </Router>
 
-      <Router>
-        <AList path="/" />
-        <Alist path="/topics/:topic" />
-      </Router>
-
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
