@@ -16,8 +16,8 @@ class App extends Component {
         <Header />
         <Navigation />
         <Router>
+          <ArticleList path="/topics/:topic" />
           <ArticleList path="/" />
-          {/* <Alist path="/topics/:topic" /> */}
         </Router>
 
       </div>

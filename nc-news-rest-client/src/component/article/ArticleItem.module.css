@@ -1,34 +1,16 @@
 
 .item{
-  border: 2px solid rgb(122, 123, 194);
+  border: 2px solid rgb(122, 194, 144);
   border-radius: 1em;
   padding-left: 0.5em; 
-  margin: 0.5em 0.5em 0.5em;
+  margin: 0.8em 0.5em 0.8em;
 }
-.left{
- display: flex;
- flex-flow: row wrap;
- flex:1;
- text-align: left;
- margin-left: 0.5em;
- margin-right: 0.5em;
+
+.article{
+  padding-left: 0.5em; 
+  margin: 0.8em 0.5em 0.8em;
 }
-.mid{
- flex:4;
- text-align: justify;
- line-height: 1.5em;
- margin: 0.5em 0.5em;
-}
-.right{
- display: flex;
- flex:0.8;
- text-align: center;
- justify-content: center;
- margin:0.5em 0.5em 1em;
-}
+
 .tag{
- margin: 0.5em 0.4em 0.8em;
-}
-.p{
- margin-right: 1em;
+ margin: 1em 0.4em 0.8em;
 }

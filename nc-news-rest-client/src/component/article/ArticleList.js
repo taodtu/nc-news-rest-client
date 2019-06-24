@@ -31,6 +31,24 @@ class ArticleList extends Component {
     })
    })
  }
+ componentDidUpdate(prevProps, prevState) {
+  if (prevProps.topic !== this.props.topic) {
+   getArticles(this.props.topic)
+    .then(({ articles }) => {
+     this.setState({
+      ...INITIAL_STATE,
+      articles,
+     })
+    })
+    .catch(error => {
+     this.setState({
+      ...INITIAL_STATE,
+      error,
+     })
+    })
+  }
+ }
+
 
  render() {
   const { articles, loading, error } = this.state

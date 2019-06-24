@@ -1,15 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from '@reach/router';
+import { getTopics } from './api'
 
-const Navigation = () => {
- const topics = ['coding', 'fottball', 'cooking']
- return (
-  <nav >
-   <Link to={`/`} className="title-link">Home</Link>
-   {topics.map(topic => <Link to={`/topics/${topic}`} key={topic} className="title-link">{topic}</Link>
-   )}
-  </nav>
- );
+const INITIAL_STATE = {
+ topics: null,
+ error: '',
+ loading: false
+}
+
+class Navigation extends Component {
+ state = {
+  ...INITIAL_STATE
+ }
+ componentDidMount() {
+  this.setState({
+   ...this.state,
+   loading: true
+  });
+  getTopics()
+   .then(topics => {
+    this.setState({
+     ...INITIAL_STATE,
+     topics,
+    })
+   })
+   .catch(error => {
+    this.setState({
+     ...INITIAL_STATE,
+     error,
+    })
+   })
+ }
+ render() {
+  const { topics } = this.state;
+  return (
+   <nav >
+    <Link to={`/`} className="title-link">Home</Link>
+    {topics && topics.map(topic => <Link to={`/topics/${topic.slug}`} key={topic.slug} className="title-link">{topic.slug}</Link>
+    )}
+   </nav>
+  );
+ }
+
 };
 
 export default Navigation;
