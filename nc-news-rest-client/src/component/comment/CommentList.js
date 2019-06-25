@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Comment from '../comment/Comment';
 import { getCommentsByArticle, deleteComment, addComment } from '../api';
 import DeleteComment from '../button/DeleteComment';
-import AddComment from './AddComment'
+import AddComment from './AddComment';
+import Error from '../error/Error'
 
 const INITIAL_STATE = {
   comments: null,
@@ -25,19 +26,38 @@ class CommentList extends Component {
       })
       .catch(error => {
         this.setState({
-          ...INITIAL_STATE,
+          ...this.state,
+          error,
+        })
+      })
+  }
+  handleDelete = (id) => {
+    const { comments } = this.state;
+    deleteComment(id)
+      .then(res => {
+        if (res.status === 204) {
+          this.setState({
+            ...this.state,
+            comments: comments.filter(comment => comment.comment_id !== id)
+          })
+        }
+      })
+      .catch(error => {
+        this.setState({
+          ...this.state,
           error,
         })
       })
   }
   render() {
-    const { comments } = this.state;
-    const { id } = this.props;
+    const { comments, loading, error } = this.state;
+    if (loading) return <p>...loading</p>;
+    if (error) return <Error error={error} />
     return (
       <div>
         <AddComment onSubmit={this.handleSubmit} />
         {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment}>
-          <DeleteComment article_id={id} comment_id={comment.comment_id} />
+          <DeleteComment comment_id={comment.comment_id} handleDelete={this.handleDelete} />
         </Comment>)
         }
       </div>
