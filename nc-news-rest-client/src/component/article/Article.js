@@ -1,6 +1,5 @@
 import React from 'react';
 import Style from './Article.module.css';
-// import VoteArticle from './VoteArticle';
 
 const Article = ({
  article_id,
@@ -10,7 +9,8 @@ const Article = ({
  topic,
  votes,
  created_at,
- comment_count }) => {
+ comment_count,
+ children }) => {
  return (
   <div className={Style.article} >
    <div className={Style.left}>
@@ -25,6 +25,7 @@ const Article = ({
    </div>
    <div className={Style.right}>
     <p className={Style.p}>Votes: {votes}</p>
+    {children}
     {/* <VoteArticle id={article_id} votes={votes} /> */}
    </div>
   </div>
