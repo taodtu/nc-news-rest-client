@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Comment.module.css';
-import VoteComment from './VoteComment';
-import DeleteComment from './DeleteComment';
+// import VoteComment from './VoteComment';
+// import DeleteComment from './DeleteComment';
 
 const Comment = ({ comment_id,
   article_id,
@@ -21,11 +21,11 @@ const Comment = ({ comment_id,
       </div>
       <div className={Style.right}>
         <p>Votes: {votes}</p>
-        <div className={Style.button}>
+        {/* <div className={Style.button}>
           <VoteComment article_id={article_id} comment_id={comment_id} /></div>
         <div className={Style.button}>
           <DeleteComment article_id={article_id} comment_id={comment_id} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

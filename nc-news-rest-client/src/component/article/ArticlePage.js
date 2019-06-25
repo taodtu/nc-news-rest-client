@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { getArticle } from '../api';
 import Article from './Article';
-// import Comment from '../comment/Comment';
+import CommentList from '../comment/CommentList'
+
 // import AddComment from '../comment/AddComment';
 const INITIAL_STATE = {
  article: null,
- comments: null,
  error: '',
  loading: false
 }
@@ -23,8 +23,8 @@ class ArticlePage extends Component {
     <h4>Article (id:{id}) and Comments </h4>
     <Article {...article} />
     <hr />
-    {/* <AddComment id={id} />
-    {comments.map(comment => <Comment {...comment} key={comment.comment_id} />)} */}
+    {/* <AddComment id={id} /> */}
+    <CommentList id={id} />
     <hr />
    </div>
   );
