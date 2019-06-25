@@ -26,3 +26,13 @@ label{
 p{
   margin: 0.5em 0em;
 }
+header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#logo{
+  width: 60px;
+  height: 60px;
+  margin-right: 1em
+}
