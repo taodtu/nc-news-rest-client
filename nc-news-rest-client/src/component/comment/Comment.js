@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './Comment.module.css';
 import Vote from '../button/Vote';
 import { updateComment } from '../api';
-// import DeleteComment from './DeleteComment';
+import DeleteComment from '../button/DeleteComment';
 
 const Comment = ({ comment_id,
   article_id,
@@ -21,11 +21,10 @@ const Comment = ({ comment_id,
         <p>Comment: {body}</p>
       </div>
       <div className={Style.right}>
-        <div className="vote"><Vote votes={votes} id={comment_id} handleVote={updateComment}/></div>
-
-        {/* <div className={Style.button}>
+        <div className="vote"><Vote votes={votes} id={comment_id} handleVote={updateComment} /></div>
+        <div className={Style.button}>
           <DeleteComment article_id={article_id} comment_id={comment_id} />
-        </div> */}
+        </div>
       </div>
     </div>
   );

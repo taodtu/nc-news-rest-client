@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Comment from '../comment/Comment';
-import { getCommentsByArticle, updateComment } from '../api';
+import { getCommentsByArticle } from '../api';
 
 const INITIAL_STATE = {
   comments: null,

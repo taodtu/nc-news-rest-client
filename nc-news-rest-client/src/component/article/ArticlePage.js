@@ -1,55 +1,55 @@
 import React, { Component } from 'react';
-import { getArticle, updateArticle } from '../api';
+import { getArticle } from '../api';
 import Article from './Article';
 import CommentList from '../comment/CommentList'
 
 
 // import AddComment from '../comment/AddComment';
 const INITIAL_STATE = {
- article: null,
- error: '',
- loading: false
+  article: null,
+  error: '',
+  loading: false
 }
 class ArticlePage extends Component {
- state = {
-  ...INITIAL_STATE
- }
+  state = {
+    ...INITIAL_STATE
+  }
 
- render() {
-  const { id } = this.props;
-  const { loading, error, article } = this.state;
-  return (
-   <div>
-    {loading && <p>...Loading</p>}
-    {error && <p>error: {error}</p>}
-    <h4>Article (id:{id}) and Comments </h4>
-    <Article {...article} />
-    <hr />
-    {/* <AddComment id={id} /> */}
-    <CommentList id={id} />
-    <hr />
-   </div>
-  );
- }
- componentDidMount() {
-  this.setState({
-   ...this.state,
-   loading: true
-  });
-  getArticle(this.props.id)
-   .then(article => {
+  render() {
+    const { id } = this.props;
+    const { loading, error, article } = this.state;
+    return (
+      <div>
+        {loading && <p>...Loading</p>}
+        {error && <p>error: {error}</p>}
+        <h4>Article (id:{id}) and Comments </h4>
+        <Article {...article} />
+        <hr />
+        {/* <AddComment id={id} /> */}
+        <CommentList id={id} />
+        <hr />
+      </div>
+    );
+  }
+  componentDidMount() {
     this.setState({
-     ...INITIAL_STATE,
-     article,
-    })
-   })
-   .catch(error => {
-    this.setState({
-     ...INITIAL_STATE,
-     error,
-    })
-   })
- }
+      ...this.state,
+      loading: true
+    });
+    getArticle(this.props.id)
+      .then(article => {
+        this.setState({
+          ...INITIAL_STATE,
+          article,
+        })
+      })
+      .catch(error => {
+        this.setState({
+          ...INITIAL_STATE,
+          error,
+        })
+      })
+  }
 }
 
 export default ArticlePage;
