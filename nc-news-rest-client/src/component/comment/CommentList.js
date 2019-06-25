@@ -31,33 +31,36 @@ class CommentList extends Component {
         })
       })
   }
-  handleDelete = (id) => {
+  handleDelete = (id, author) => {
+    const { currentUser } = this.props;
     const { comments } = this.state;
-    deleteComment(id)
-      .then(res => {
-        if (res.status === 204) {
+    currentUser !== author
+      ? alert('Author can only delete comment made by him/her, please change the current author to delete the comment')
+      : deleteComment(id)
+        .then(res => {
+          if (res.status === 204) {
+            this.setState({
+              ...this.state,
+              comments: comments.filter(comment => comment.comment_id !== id)
+            })
+          }
+        })
+        .catch(error => {
           this.setState({
             ...this.state,
-            comments: comments.filter(comment => comment.comment_id !== id)
+            error,
           })
-        }
-      })
-      .catch(error => {
-        this.setState({
-          ...this.state,
-          error,
         })
-      })
   }
   render() {
     const { comments, loading, error } = this.state;
-    if (loading) return <p>...loading</p>;
     if (error) return <Error error={error} />
     return (
       <div>
         <AddComment onSubmit={this.handleSubmit} />
+        {loading && <p>...loading</p>}
         {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment}>
-          <DeleteComment comment_id={comment.comment_id} handleDelete={this.handleDelete} />
+          <DeleteComment comment_id={comment.comment_id} handleDelete={this.handleDelete} author={comment.author} />
         </Comment>)
         }
       </div>

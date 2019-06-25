@@ -17,10 +17,10 @@ class ArticlePage extends Component {
   render() {
     const { id, currentUser } = this.props;
     const { loading, error, article } = this.state;
-    if (loading) return <p>...loading</p>;
     if (error) return <Error error={error} />
     return (
       <div>
+        {loading && <p>...loading</p>}
         <h4>Article (id:{id}) and Comments </h4>
         <Article {...article} />
         <hr />
