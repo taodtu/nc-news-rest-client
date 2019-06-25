@@ -3,6 +3,7 @@ import { getArticle, updateArticle } from '../api';
 import Article from './Article';
 import CommentList from '../comment/CommentList'
 import VoteUp from '../button/VoteUp';
+import VoteDown from '../button/VoteDown';
 
 // import AddComment from '../comment/AddComment';
 const INITIAL_STATE = {
@@ -14,12 +15,31 @@ class ArticlePage extends Component {
  state = {
   ...INITIAL_STATE
  }
- handleClick = () => {
+ handleClickUp = () => {
   this.setState({
    ...this.state,
    loading: true
   });
   updateArticle(this.props.id, { inc_votes: 1 })
+   .then(article => {
+    this.setState({
+     ...INITIAL_STATE,
+     article,
+    })
+   })
+   .catch(error => {
+    this.setState({
+     ...INITIAL_STATE,
+     error,
+    })
+   })
+ }
+ handleClickDown = () => {
+  this.setState({
+   ...this.state,
+   loading: true
+  });
+  updateArticle(this.props.id, { inc_votes: -1 })
    .then(article => {
     this.setState({
      ...INITIAL_STATE,
@@ -42,7 +62,8 @@ class ArticlePage extends Component {
     {error && <p>error: {error}</p>}
     <h4>Article (id:{id}) and Comments </h4>
     <Article {...article}>
-     <VoteUp handleClick={this.handleClick} />
+     <div className="vote"><VoteUp handleClick={this.handleClickUp} /></div>
+     <div className="vote"><VoteDown handleClick={this.handleClickDown} /></div>
     </Article>
     <hr />
     {/* <AddComment id={id} /> */}
