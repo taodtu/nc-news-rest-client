@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from './029-live.svg';
+import logo from './034-microphone.svg';
 
 const Header = () => {
  return (
   <header>
    <img src={logo} alt="title" className="logo" id="logo" />
-   <h2>Nc News</h2>
+   <h1>Nc News</h1>
   </header>
  );
 };
