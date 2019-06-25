@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Comment from '../comment/Comment';
 import { getCommentsByArticle } from '../api';
+import DeleteComment from '../button/DeleteComment';
 
 const INITIAL_STATE = {
   comments: null,
@@ -16,7 +17,9 @@ class CommentList extends Component {
     const { comments } = this.state;
     return (
       <div>
-        {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment} />)
+        {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment}>
+          <DeleteComment article_id={comment.article_id} comment_id={comment.comment_id} />
+        </Comment>)
         }
       </div>
     );
