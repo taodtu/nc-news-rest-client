@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getArticles } from '../api';
 import ArticleItem from './ArticleItem';
+import Error from '../error/Error'
 
 const INITIAL_STATE = {
   articles: null,
@@ -15,10 +16,10 @@ class ArticleList extends Component {
 
   render() {
     const { articles, loading, error } = this.state
+    if (error) return <Error error={error} />
     return (
       <div>
         {loading && <p>...Loading</p>}
-        {error && <p>error: {error}</p>}
         {articles && articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
       </div>
     );
@@ -28,6 +29,15 @@ class ArticleList extends Component {
       ...this.state,
       loading: true
     });
+    this.fetchArticles()
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.topic !== this.props.topic
+      || prevProps.author !== this.props.author) {
+      this.fetchArticles();
+    }
+  }
+  fetchArticles() {
     getArticles(this.props.topic, this.props.author)
       .then(({ articles }) => {
         this.setState({
@@ -41,24 +51,6 @@ class ArticleList extends Component {
           error,
         })
       })
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.topic !== this.props.topic
-      || prevProps.author !== this.props.author) {
-      getArticles(this.props.topic, this.props.author)
-        .then(({ articles }) => {
-          this.setState({
-            ...INITIAL_STATE,
-            articles,
-          })
-        })
-        .catch(error => {
-          this.setState({
-            ...INITIAL_STATE,
-            error,
-          })
-        })
-    }
   }
 }
 
