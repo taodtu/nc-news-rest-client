@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Comment from '../comment/Comment';
-import { getCommentsByArticle, deleteComment } from '../api';
+import { getCommentsByArticle, deleteComment, addComment } from '../api';
 import DeleteComment from '../button/DeleteComment';
 import AddComment from './AddComment'
 
@@ -14,15 +14,28 @@ class CommentList extends Component {
   state = {
     ...INITIAL_STATE
   }
-  handleSubmit = () => {
-
+  handleSubmit = (text) => {
+    const { id, currentUser } = this.props;
+    addComment(id, { username: currentUser, body: text })
+      .then(comment => {
+        this.setState({
+          ...this.state,
+          comments: [comment, ...this.state.comments]
+        })
+      })
+      .catch(error => {
+        this.setState({
+          ...INITIAL_STATE,
+          error,
+        })
+      })
   }
   render() {
     const { comments } = this.state;
-    const { id, currentUser } = this.props;
+    const { id } = this.props;
     return (
       <div>
-        <AddComment id={id} currentUser={currentUser} onSubmit={this.handleSubmit} />
+        <AddComment onSubmit={this.handleSubmit} />
         {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment}>
           <DeleteComment article_id={id} comment_id={comment.comment_id} />
         </Comment>)

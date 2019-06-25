@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <label>Current User:</label>
+        <label>Current Author:</label>
         <Select value={currentUser} autoWidth={true} onChange={this.handleChange}
         >
           <MenuItem value="jessjelly">jessjelly</MenuItem>
