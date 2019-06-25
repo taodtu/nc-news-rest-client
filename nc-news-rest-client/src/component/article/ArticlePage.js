@@ -16,7 +16,7 @@ class ArticlePage extends Component {
   }
 
   render() {
-    const { id } = this.props;
+    const { id, currentUser } = this.props;
     const { loading, error, article } = this.state;
     return (
       <div>
@@ -26,7 +26,7 @@ class ArticlePage extends Component {
         <Article {...article} />
         <hr />
         {/* <AddComment id={id} /> */}
-        <CommentList id={id} />
+        <CommentList id={id} currentUser={currentUser} />
         <hr />
       </div>
     );

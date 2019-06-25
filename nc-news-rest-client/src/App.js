@@ -41,7 +41,7 @@ class App extends Component {
           <ArticleList path="/topics/:topic" />
           <ArticleList path="/users/:author" />
           <ArticleList path="/" />
-          <ArticlePage path="/articles/:id" />
+          <ArticlePage path="/articles/:id" currentUser={currentUser} />
           <Error default />
         </Router>
         <Footer />

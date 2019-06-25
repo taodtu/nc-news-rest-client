@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Comment from '../comment/Comment';
-import { getCommentsByArticle } from '../api';
+import { getCommentsByArticle, deleteComment, addComment } from '../api';
 import DeleteComment from '../button/DeleteComment';
+import { Button, TextField } from '@material-ui/core';
 
 const INITIAL_STATE = {
   comments: null,
   error: '',
-  loading: false
+  loading: false,
+  body: ''
 }
 
 class CommentList extends Component {
