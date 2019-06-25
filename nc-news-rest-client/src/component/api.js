@@ -8,8 +8,8 @@ export const getTopics = () => {
  return request.get('/topics').then(({ data }) => data.topics)
 };
 
-export const getArticles = (topic, author) => {
- return request.get(`/articles`, { params: { topic, author } }).then(({ data }) => data.articles)
+export const getArticles = (topic, author, sort_by, order) => {
+ return request.get(`/articles`, { params: { topic, author, sort_by, order } }).then(({ data }) => data.articles)
 };
 
 export const getUser = (username) => {

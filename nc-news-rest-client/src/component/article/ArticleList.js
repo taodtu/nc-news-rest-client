@@ -6,7 +6,9 @@ import Error from '../error/Error'
 const INITIAL_STATE = {
   articles: null,
   error: '',
-  loading: false
+  loading: false,
+  sort_by: 'created_at',
+  order: 'desc'
 }
 
 class ArticleList extends Component {
@@ -33,7 +35,10 @@ class ArticleList extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.topic !== this.props.topic
-      || prevProps.author !== this.props.author) {
+      || prevProps.author !== this.props.author
+      || prevState.sort_by !== this.state.sort_by
+      || prevState.order !== this.state.order
+    ) {
       this.fetchArticles();
     }
   }
@@ -42,7 +47,7 @@ class ArticleList extends Component {
       ...this.state,
       loading: true
     });
-    getArticles(this.props.topic, this.props.author)
+    getArticles(this.props.topic, this.props.author, this.state.sort_by, this.state.order)
       .then(({ articles }) => {
         this.setState({
           ...INITIAL_STATE,
