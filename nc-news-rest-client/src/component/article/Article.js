@@ -1,5 +1,7 @@
 import React from 'react';
 import Style from './Article.module.css';
+import { updateArticle } from '../api';
+import Vote from '../button/Vote';
 
 const Article = ({
  article_id,
@@ -9,8 +11,7 @@ const Article = ({
  topic,
  votes,
  created_at,
- comment_count,
- children }) => {
+ comment_count }) => {
  return (
   <div className={Style.article} >
    <div className={Style.left}>
@@ -24,8 +25,7 @@ const Article = ({
     <p>Text: {body}</p>
    </div>
    <div className={Style.right}>
-    <p className={Style.p}>Votes: {votes}</p>
-    {children}
+    <Vote votes={votes} id={article_id} handleVote={updateArticle} />
     {/* <VoteArticle id={article_id} votes={votes} /> */}
    </div>
   </div>

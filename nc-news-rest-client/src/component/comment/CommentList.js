@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Comment from '../comment/Comment';
-import { getCommentsByArticle } from '../api';
-import VoteUp from '../button/VoteUp';
-import VoteDown from '../button/VoteDown';
+import { getCommentsByArticle, updateComment } from '../api';
 
 const INITIAL_STATE = {
   comments: null,
@@ -18,15 +16,7 @@ class CommentList extends Component {
     const { comments } = this.state;
     return (
       <div>
-        {comments && comments.map(comment => {
-          return (
-            <div>
-              <Comment key={comment.comment_id} {...comment}>
-                <div className="vote"><VoteUp handleClick={this.handleClickUp} /></div>
-                <div className="vote"><VoteDown handleClick={this.handleClickDown} /></div>
-              </Comment>
-            </div>
-          )
+        {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment} />)
         })}
       </div>
     );

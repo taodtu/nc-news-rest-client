@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { getArticle, updateArticle } from '../api';
 import Article from './Article';
 import CommentList from '../comment/CommentList'
-import VoteUp from '../button/VoteUp';
-import VoteDown from '../button/VoteDown';
+
 
 // import AddComment from '../comment/AddComment';
 const INITIAL_STATE = {
@@ -61,10 +60,7 @@ class ArticlePage extends Component {
     {loading && <p>...Loading</p>}
     {error && <p>error: {error}</p>}
     <h4>Article (id:{id}) and Comments </h4>
-    <Article {...article}>
-     <div className="vote"><VoteUp handleClick={this.handleClickUp} /></div>
-     <div className="vote"><VoteDown handleClick={this.handleClickDown} /></div>
-    </Article>
+    <Article {...article} />
     <hr />
     {/* <AddComment id={id} /> */}
     <CommentList id={id} />
