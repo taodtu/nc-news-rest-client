@@ -8,7 +8,8 @@ const Comment = ({ comment_id,
   author,
   body,
   votes,
-  created_at }) => {
+  created_at,
+  children }) => {
   return (
     <div className={Style.article} >
       <div className={Style.left}>
@@ -21,9 +22,8 @@ const Comment = ({ comment_id,
       </div>
       <div className={Style.right}>
         <p>Votes: {votes}</p>
+        {children}
         {/* <div className={Style.button}>
-          <VoteComment article_id={article_id} comment_id={comment_id} /></div>
-        <div className={Style.button}>
           <DeleteComment article_id={article_id} comment_id={comment_id} />
         </div> */}
       </div>
