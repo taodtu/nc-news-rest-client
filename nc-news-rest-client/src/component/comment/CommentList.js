@@ -17,7 +17,7 @@ class CommentList extends Component {
     return (
       <div>
         {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment} />)
-        })}
+        }
       </div>
     );
   }

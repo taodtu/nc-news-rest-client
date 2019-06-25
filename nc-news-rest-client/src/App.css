@@ -39,3 +39,10 @@ header{
 .vote{
   margin-left: 1em;
 }
+.vote-block{
+ display: flex;
+ flex-flow: row wrap;
+ text-align: center;
+ justify-content: center;
+ margin:0em 0.5em;
+}

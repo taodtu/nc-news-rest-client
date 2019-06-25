@@ -14,44 +14,7 @@ class ArticlePage extends Component {
  state = {
   ...INITIAL_STATE
  }
- handleClickUp = () => {
-  this.setState({
-   ...this.state,
-   loading: true
-  });
-  updateArticle(this.props.id, { inc_votes: 1 })
-   .then(article => {
-    this.setState({
-     ...INITIAL_STATE,
-     article,
-    })
-   })
-   .catch(error => {
-    this.setState({
-     ...INITIAL_STATE,
-     error,
-    })
-   })
- }
- handleClickDown = () => {
-  this.setState({
-   ...this.state,
-   loading: true
-  });
-  updateArticle(this.props.id, { inc_votes: -1 })
-   .then(article => {
-    this.setState({
-     ...INITIAL_STATE,
-     article,
-    })
-   })
-   .catch(error => {
-    this.setState({
-     ...INITIAL_STATE,
-     error,
-    })
-   })
- }
+
  render() {
   const { id } = this.props;
   const { loading, error, article } = this.state;

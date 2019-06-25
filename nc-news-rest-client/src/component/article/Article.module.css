@@ -10,20 +10,19 @@
 .left{
  display: flex;
  flex-flow: row wrap;
- flex:1;
  text-align: left;
  margin-left: 0.5em;
  margin-right: 0.5em;
 }
 .mid{
- flex:4;
+ 
  text-align: justify;
  line-height: 1.5em;
  margin: 0.5em 0.5em;
 }
 .right{
  display: flex;
- flex:0.8;
+ flex-flow: row wrap;
  text-align: center;
  justify-content: center;
  margin:0em 0.5em 1em;

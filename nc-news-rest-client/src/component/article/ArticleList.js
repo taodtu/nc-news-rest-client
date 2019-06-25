@@ -37,7 +37,11 @@ class ArticleList extends Component {
       this.fetchArticles();
     }
   }
-  fetchArticles() {
+  fetchArticles = () => {
+    this.setState({
+      ...this.state,
+      loading: true
+    });
     getArticles(this.props.topic, this.props.author)
       .then(({ articles }) => {
         this.setState({

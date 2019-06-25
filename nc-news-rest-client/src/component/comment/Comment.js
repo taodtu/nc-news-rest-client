@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './Comment.module.css';
 import Vote from '../button/Vote';
+import { updateComment } from '../api';
 // import DeleteComment from './DeleteComment';
 
 const Comment = ({ comment_id,
@@ -8,8 +9,7 @@ const Comment = ({ comment_id,
   author,
   body,
   votes,
-  created_at,
-  children }) => {
+  created_at, }) => {
   return (
     <div className={Style.article} >
       <div className={Style.left}>
@@ -21,8 +21,7 @@ const Comment = ({ comment_id,
         <p>Comment: {body}</p>
       </div>
       <div className={Style.right}>
-        <p>Votes: {votes}</p>
-        <div className="vote"><Vote /></div>
+        <div className="vote"><Vote votes={votes} id={comment_id} handleVote={updateComment}/></div>
 
         {/* <div className={Style.button}>
           <DeleteComment article_id={article_id} comment_id={comment_id} />
