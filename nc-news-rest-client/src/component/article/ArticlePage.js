@@ -25,7 +25,6 @@ class ArticlePage extends Component {
         <h4>Article (id:{id}) and Comments </h4>
         <Article {...article} />
         <hr />
-        {/* <AddComment id={id} /> */}
         <CommentList id={id} currentUser={currentUser} />
         <hr />
       </div>
