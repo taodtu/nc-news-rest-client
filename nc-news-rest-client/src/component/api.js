@@ -28,8 +28,8 @@ export const addComment = (article_id, body) => {
  return request.post(`/articles/${article_id}/comments`, { ...body }).then(({ data }) => data.comment)
 };
 
-export const getCommentsByArticle = (article_id) => {
- return request.get(`/articles/${article_id}/comments`).then(({ data }) => data.comments)
+export const getCommentsByArticle = (article_id, sort_by, order) => {
+ return request.get(`/articles/${article_id}/comments`, { params: { sort_by, order } }).then(({ data }) => data.comments)
 };
 
 export const updateComment = (id, body) => {
@@ -40,6 +40,3 @@ export const deleteComment = (id) => {
  return request.delete(`/comments/${id}`).then(response => response)
 };
 
-export const updateStudent = (id, progress) => {
- return request.patch(`/students/${id}`, {}, { params: { progress: `${progress}` } }).then(response => response)
-};

@@ -28,7 +28,6 @@ const Article = ({
    </div>
    <div className={Style.right}>
     <Vote votes={votes} id={article_id} handleVote={updateArticle} />
-    {/* <VoteArticle id={article_id} votes={votes} /> */}
    </div>
   </div>
  );
