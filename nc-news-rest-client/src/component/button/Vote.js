@@ -18,18 +18,16 @@ class Vote extends Component {
     this.updateVote(-1)
   }
   updateVote = (change) => {
-    this.setState({
-      ...this.state,
-      loading: true
-    });
+    this.setState(prev => ({
+      ...INITIAL_STATE,
+      vote: prev.vote + change,
+    }));
     this.props.handleVote(this.props.id, { inc_votes: change })
-      .then(res => {
-        if (res) {
-          this.setState(prev => ({
-            ...INITIAL_STATE,
-            vote: prev.vote + change,
-          }))
-        }
+      .catch(err => {
+        this.setState(prev => ({
+          ...INITIAL_STATE,
+          vote: prev.vote - change,
+        }))
       })
       .catch(error => {
         this.setState({
@@ -47,11 +45,11 @@ class Vote extends Component {
       <div className="vote-block">
         <p>Votes: {votes + vote}</p>
         <div className="vote">
-          <Button variant="outlined" size="small" color="primary"
+          <Button variant="outlined" size="small" color="primary" disabled={vote > 0}
             onClick={this.voteUp}> + vote! </Button>
         </div>
         <div className="vote">
-          <Button variant="outlined" size="small" color="secondary"
+          <Button variant="outlined" size="small" color="secondary" disabled={vote < 0}
             onClick={this.voteDown}> - vote! </Button>
         </div>
       </div>

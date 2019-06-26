@@ -4,6 +4,8 @@ All the data manipulations on array and object are ensured **`not mutating`** th
 
 Maximize **`component reuse`**, such as the voting button, article list, sort/order select.
 
+Implement **`optimistic response`** for the vote button.
+
 Applying **`slot pattern`** to avoid props drilling.
 
 ## Available Scripts
