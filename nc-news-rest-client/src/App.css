@@ -28,6 +28,10 @@ label{
 p{
   margin: 0.5em 0em;
 }
+label{
+  color: rgb(3, 10, 75);
+  font-weight: bold;
+}
 header{
   display: flex;
   align-items: center;
@@ -58,7 +62,13 @@ header{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  align-items: center;
 }
 .sort{
   font-size:0.9rem;
+  margin-left: 1em;
+}
+.toggle-button{
+  margin:0.2em 1.5em;
+  margin-left: auto;
 }

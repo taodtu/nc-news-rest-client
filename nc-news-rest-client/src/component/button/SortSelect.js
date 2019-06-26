@@ -4,7 +4,7 @@ import { Select, MenuItem } from '@material-ui/core';
 const SortSelect = ({ onChange, sortValue }) => {
  return (
   <div className="sort">
-   <label>Sort by:</label>
+   <label>SORT BY:</label>
    <Select value={sortValue} autoWidth={true} onChange={onChange}
    >
     <MenuItem value="date">date</MenuItem>

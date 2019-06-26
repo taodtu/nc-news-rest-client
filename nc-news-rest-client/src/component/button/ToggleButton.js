@@ -19,7 +19,7 @@ class ToggleButton extends Component {
   const { left, right } = this.props;
   const { onLeft } = this.state;
   return (
-   <div>
+   <div className="toggle-button">
     <Button variant={onLeft ? "contained" : "outlined"} size="small" color="primary"
      onClick={() => this.handleClick(left)}> {left} </Button>
     <Button variant={onLeft ? "outlined" : "contained"} size="small" color="primary"
