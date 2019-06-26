@@ -3,7 +3,9 @@
   max-width: 800px;
   margin:auto;
 }
-
+.body{
+  font-size: 0.9rem;
+}
 h4{
   color: rgb(52, 9, 95);
   margin: 1em 0.5em 0.6em;

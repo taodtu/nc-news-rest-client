@@ -4,7 +4,6 @@ import Vote from '../button/Vote';
 import { updateComment } from '../api';
 
 const Comment = ({ comment_id,
-  article_id,
   author,
   body,
   votes,

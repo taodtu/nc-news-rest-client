@@ -31,7 +31,7 @@ class AddComment extends Component {
        <TextField label='comment' value={text} onChange={this.handleChange} margin='none' fullWidth />
       </div>
       <div className={Style.submit}>
-       <Button type="submit" variant="contained" size="medium" color="primary" disabled={!text}> Submit </Button>
+       <Button type="submit" variant="contained" size="small" color="primary" disabled={!text}> Submit </Button>
       </div>
      </div>
     </form>

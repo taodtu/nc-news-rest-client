@@ -4,13 +4,16 @@ import ArticleItem from './ArticleItem';
 import Error from '../error/Error'
 import SortSelect from '../button/SortSelect';
 import OrderSelect from '../button/OrderSelect';
+import Page from './Page';
 
 const INITIAL_STATE = {
   articles: null,
   error: '',
   loading: false,
   sort_by: 'created_at',
-  order: 'desc'
+  order: 'desc',
+  limit: 4,
+  p: 1
 }
 
 const SORT_CHART = {
@@ -41,7 +44,7 @@ class ArticleList extends Component {
     }))
   }
   render() {
-    const { articles, loading, error, sort_by, order } = this.state
+    const { articles, loading, error, sort_by, order, limit, p } = this.state
     if (error) return <Error error={error} />
     return (
       <div>
@@ -50,7 +53,8 @@ class ArticleList extends Component {
           <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
           <OrderSelect onChange={this.handleOrderChange} orderValue={order} />
         </div>
-        {articles && articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
+        {articles && articles.articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
+        {articles && <Page p={Math.ceil(articles.total_count / limit)} />}
       </div>
     );
   }
@@ -71,11 +75,12 @@ class ArticleList extends Component {
     }
   }
   fetchArticles = () => {
+    const { sort_by, order, limit, p } = this.state
     this.setState({
       ...this.state,
       loading: true
     });
-    getArticles(this.props.topic, this.props.author, this.state.sort_by, this.state.order)
+    getArticles(this.props.topic, this.props.author, sort_by, order, limit, p)
       .then(({ articles }) => {
         this.setState(prev => ({
           ...prev,

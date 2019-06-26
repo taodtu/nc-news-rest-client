@@ -36,14 +36,16 @@ class App extends Component {
         </Select>
         <Link to={`/users/${currentUser}`} className="title-link">User</Link>
         <div className="nav" ><Navigation /></div>
+        <div className="body">
 
-        <Router>
-          <ArticleList path="/topics/:topic" />
-          <ArticleList path="/users/:author" />
-          <ArticleList path="/" />
-          <ArticlePage path="/articles/:id" currentUser={currentUser} />
-          <Error default />
-        </Router>
+          <Router>
+            <ArticleList path="/topics/:topic" />
+            <ArticleList path="/users/:author" />
+            <ArticleList path="/" />
+            <ArticlePage path="/articles/:id" currentUser={currentUser} />
+            <Error default />
+          </Router>
+        </div>
         <Footer />
       </div>
     );
