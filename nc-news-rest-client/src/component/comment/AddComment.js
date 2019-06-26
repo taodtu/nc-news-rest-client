@@ -24,7 +24,7 @@ class AddComment extends Component {
   const { text } = this.state;
   return (
    <div className={Style.outline}>
-    <h4>Post a comment to this article using current author</h4>
+    <h4>Post a comment to this article with current author</h4>
     <form onSubmit={this.onHandleSubmit} >
      <div className={Style.form}>
       <div className={Style.body}>

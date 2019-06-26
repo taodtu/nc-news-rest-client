@@ -2,6 +2,7 @@ import React from 'react';
 import Style from './Article.module.css';
 import { updateArticle } from '../api';
 import Vote from '../button/Vote';
+import { Link } from '@reach/router';
 
 const Article = ({
  article_id,
@@ -15,8 +16,9 @@ const Article = ({
  return (
   <div className={Style.article} >
    <div className={Style.left}>
-    <span className={Style.tag}>Slug: {topic}</span>
-    <span className={Style.tag}>Author: {author}</span>
+    <span className={Style.tag}><Link to={`/topics/${topic}`} >topic: {topic} </Link></span>
+    <span className={Style.tag}><Link to={`/users/${author}`} >
+     Author: {author}</Link></span>
     <span className={Style.tag}>Date: {created_at}</span>
     <span className={Style.tag}>Comments: {comment_count}</span>
    </div>

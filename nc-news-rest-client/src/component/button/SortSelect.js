@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SortSelect = () => {
+const SortSelect = ({ onChange }) => {
  return (
   <div>
 

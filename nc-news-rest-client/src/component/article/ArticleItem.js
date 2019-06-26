@@ -3,7 +3,7 @@ import Style from './ArticleItem.module.css';
 import { Button } from '@material-ui/core';
 import { Link } from '@reach/router';
 
-const ArticleItem = ({ article: { article_id, title, votes, created_at, comment_count } }) => {
+const ArticleItem = ({ article: { article_id, title, topic, created_at, author } }) => {
  return (
   <div className={Style.item}>
    <div className={Style.article}>
@@ -11,8 +11,8 @@ const ArticleItem = ({ article: { article_id, title, votes, created_at, comment_
    </div>
    <div className={Style.article}>
     <span className={Style.tag}>article_id: {article_id} </span>
-    <span className={Style.tag}>votes: {votes} </span>
-    <span className={Style.tag}>comment_count:  {comment_count}</span>
+    <span className={Style.tag}><Link to={`/topics/${topic}`} >topic: {topic} </Link></span>
+    <span className={Style.tag}><Link to={`/users/${author}`} >author:  {author}</Link></span>
    </div>
    <div className={Style.article}>Date created:  {created_at}</div>
   </div>
