@@ -5,6 +5,7 @@ import Error from '../error/Error'
 import SortSelect from '../button/SortSelect';
 import OrderSelect from '../button/OrderSelect';
 import Page from './Page';
+import LimitSelect from '../button/LimitSelect';
 
 const INITIAL_STATE = {
   articles: null,
@@ -43,8 +44,14 @@ class ArticleList extends Component {
       order: value
     }))
   }
-  handleClick = (pageNumber) => {
-    console.log(pageNumber)
+  handleLimitChange = ({ target }) => {
+    const { value } = target;
+    this.setState(prev => ({
+      ...prev,
+      limit: value
+    }))
+  }
+  handlePageClick = (pageNumber) => {
     this.setState(prev => ({
       ...prev,
       p: pageNumber
@@ -61,7 +68,8 @@ class ArticleList extends Component {
           <OrderSelect onChange={this.handleOrderChange} orderValue={order} />
         </div>
         {articles && articles.articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
-        {articles && <Page pageTotal={Math.ceil(articles.total_count / limit)} onClick={this.handleClick} p={p} />}
+        {articles && <Page pageTotal={Math.ceil(articles.total_count / limit)} onClick={this.handlePageClick} p={p} />}
+        <LimitSelect onChange={this.handleLimitChange} limit={limit} />
       </div>
     );
   }
