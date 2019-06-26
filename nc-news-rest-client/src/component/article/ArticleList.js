@@ -86,12 +86,14 @@ class ArticleList extends Component {
       || prevState.sort_by !== this.state.sort_by
       || prevState.order !== this.state.order
       || prevState.limit !== this.state.limit
-      || prevState.p !== this.state.p
     ) {
-      this.fetchArticles();
+      this.fetchArticles(1);
+    }
+    if (prevState.p !== this.state.p) {
+      this.fetchArticles(this.state.p);
     }
   }
-  fetchArticles = () => {
+  fetchArticles = (page) => {
     const { sort_by, order, limit, p } = this.state
     this.setState({
       ...this.state,
@@ -102,6 +104,7 @@ class ArticleList extends Component {
         this.setState(prev => ({
           ...prev,
           loading: false,
+          p: page,
           articles
         }))
       })
