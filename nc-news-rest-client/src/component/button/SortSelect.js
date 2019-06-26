@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select, MenuItem } from '@material-ui/core';
 
-const SortSelect = ({ onChange, sortValue, adding }) => {
+const SortSelect = ({ onChange, sortValue, addings }) => {
  return (
   <div className="sort">
    <label>SORT BY:</label>
@@ -11,13 +11,13 @@ const SortSelect = ({ onChange, sortValue, adding }) => {
     <MenuItem value="id">id</MenuItem>
     <MenuItem value="votes">votes</MenuItem>
     <MenuItem value="author">author</MenuItem>
-    {adding && <MenuItem value={adding}>{adding}</MenuItem>}
+    {addings && addings.map(adding => <MenuItem key={adding} value={adding}>{adding}</MenuItem>)}
    </Select>
   </div>
  );
 };
 
-const WithCommentCount = SelectBase => props => <SelectBase {...props} adding={"comments"} />;
+const WithCommentCount = SelectBase => props => <SelectBase {...props} addings={["comments"]} />;
 
 export const SortSelectWithCommentCount = WithCommentCount(SortSelect);
 
