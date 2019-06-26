@@ -2,7 +2,7 @@
 
 All the data manipulations on array and object are ensured **`not mutating`** the original data by using destructuring and spread operator.
 
-Maximize **`component reuse`**, such as the voting button, article list, sort/order select.
+Maximize **`component reuse`**, such as the voting button, toggle button, article list, sort/order select.
 
 Implement **`optimistic response`** for the vote button.
 

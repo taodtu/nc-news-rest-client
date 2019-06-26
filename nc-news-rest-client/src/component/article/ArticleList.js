@@ -3,7 +3,6 @@ import { getArticles } from '../api';
 import ArticleItem from './ArticleItem';
 import Error from '../error/Error'
 import SortSelect from '../button/SortSelect';
-import OrderSelect from '../button/OrderSelect';
 import ToggleButton from '../button/ToggleButton';
 import Page from './Page';
 import LimitSelect from '../button/LimitSelect';
@@ -38,13 +37,6 @@ class ArticleList extends Component {
       sort_by: SORT_CHART[value]
     }))
   }
-  handleOrderChange = ({ target }) => {
-    const { value } = target;
-    this.setState(prev => ({
-      ...prev,
-      order: value
-    }))
-  }
   handleToggle = (order) => {
     order === "desc"
       ? this.setState(prev => ({
@@ -70,7 +62,7 @@ class ArticleList extends Component {
     }))
   }
   render() {
-    const { articles, loading, error, sort_by, order, limit, p } = this.state
+    const { articles, loading, error, sort_by, limit, p } = this.state
     if (error) return <Error error={error} />
     return (
       <div>
@@ -78,7 +70,6 @@ class ArticleList extends Component {
         <div className="article-sort-order">
           <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
           <ToggleButton left={"desc"} right={"asc"} onClick={this.handleToggle} />
-          {/* <OrderSelect onChange={this.handleOrderChange} orderValue={order} /> */}
         </div>
         {articles && articles.articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
         {articles && <Page pageTotal={Math.ceil(articles.total_count / limit)} onClick={this.handlePageClick} p={p} />}

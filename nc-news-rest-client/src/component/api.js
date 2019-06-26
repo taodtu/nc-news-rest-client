@@ -32,6 +32,10 @@ export const getCommentsByArticle = (article_id, sort_by, order) => {
  return request.get(`/articles/${article_id}/comments`, { params: { sort_by, order } }).then(({ data }) => data.comments)
 };
 
+export const getCommentsByUser = (username, sort_by, order) => {
+ return request.get(`/users/${username}/comments`, { params: { sort_by, order } }).then(({ data }) => data.comments)
+};
+
 export const updateComment = (id, body) => {
  return request.patch(`/comments/${id}`, { ...body }).then(({ data }) => data.comment)
 };
