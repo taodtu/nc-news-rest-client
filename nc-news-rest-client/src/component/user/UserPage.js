@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserItem from './UserItem';
-import { getUser } from '../api';
+import { getUser, getCommentsByUser } from '../api';
 import ToggleButton from '../button/ToggleButton'
 import Error from '../error/Error';
 import ArticleList from '../article/ArticleList';
@@ -36,7 +36,7 @@ class UserPage extends Component {
         {loading && <p>...loading</p>}
         {user && <UserItem user={user} />}
         {user && <ToggleButton left={"Articles"} right={"Comments"} onClick={this.handleListToggle} />}
-        {user && showArticleList ? <ArticleList author={user.username} /> : <p>list</p>}
+        {user && (showArticleList ? <ArticleList author={user.username} /> : <CommentList id={user.username} currentUser={this.props.currentUser} getComments={getCommentsByUser} />)}
       </div>
     );
   }

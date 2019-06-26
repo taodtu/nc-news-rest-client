@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getArticle } from '../api';
+import { getArticle, getCommentsByArticle } from '../api';
 import Article from './Article';
 import CommentList from '../comment/CommentList'
 import Error from '../error/Error'
@@ -24,7 +24,7 @@ class ArticlePage extends Component {
         <h4>Article (id:{id}) and Comments </h4>
         <Article {...article} />
         <hr />
-        <CommentList id={id} currentUser={currentUser} />
+        <CommentList id={id} currentUser={currentUser} getComments={getCommentsByArticle} />
         <hr />
       </div>
     );

@@ -42,7 +42,7 @@ class App extends Component {
           <Router>
             <ArticleList path="/topics/:topic" />
             {/* <ArticleList path="/users/:author" /> */}
-            <UserPage path="/users/:author" />
+            <UserPage path="/users/:author" currentUser={currentUser} />
             <ArticleList path="/" />
             <ArticlePage path="/articles/:id" currentUser={currentUser} />
             <Error default />

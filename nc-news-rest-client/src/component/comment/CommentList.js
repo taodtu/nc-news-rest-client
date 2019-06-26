@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Comment from '../comment/Comment';
-import { getCommentsByArticle, deleteComment, addComment } from '../api';
+import { deleteComment, addComment } from '../api';
 import DeleteComment from '../button/DeleteComment';
 import AddComment from './AddComment';
 import Error from '../error/Error';
@@ -49,7 +49,7 @@ class CommentList extends Component {
       ...this.state,
       loading: true
     });
-    getCommentsByArticle(this.props.id)
+    this.props.getComments(this.props.id)
       .then(comments => {
         this.setState({
           ...INITIAL_STATE,
@@ -71,7 +71,7 @@ class CommentList extends Component {
         ...this.state,
         loading: true
       });
-      getCommentsByArticle(this.props.id, this.state.sort_by, this.state.order)
+      this.props.getComments(this.props.id, this.state.sort_by, this.state.order)
         .then(comments => {
           this.setState(prev => ({
             ...prev,
