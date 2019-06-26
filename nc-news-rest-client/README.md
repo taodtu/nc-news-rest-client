@@ -2,7 +2,11 @@
 
 All the data manipulations on array and object are ensured **`not mutating`** the original data by using destructuring and spread operator.
 
-Maximize **`component reuse`**, such as the voting button, toggle button, article list, sort/order select.
+Maximize **`component reuse`**, such as the voting button, toggle-button, article list, sort-select.
+
+Applying **`Render Props`** pattern to reuse the CommentList in both Article and User Page, where a AddComment is deployed inside of Article page which needs access to CommentList method. 
+
+Adopting **`Higher Order Component (HOC)`** pattern in SortSelect component to make it reusable with added properties in ArticleList and CommentList component.
 
 Implement **`optimistic response`** for the vote button.
 
