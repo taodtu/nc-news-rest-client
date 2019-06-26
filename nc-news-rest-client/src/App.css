@@ -52,6 +52,11 @@ header{
   margin-right: 0.5em;
   margin-left: 0em;
 }
+.article-sort-order{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
 .sort{
   font-size:0.9rem;
 }

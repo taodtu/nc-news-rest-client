@@ -3,6 +3,7 @@ import { getArticles } from '../api';
 import ArticleItem from './ArticleItem';
 import Error from '../error/Error'
 import SortSelect from '../button/SortSelect';
+import OrderSelect from '../button/OrderSelect';
 
 const INITIAL_STATE = {
   articles: null,
@@ -32,13 +33,23 @@ class ArticleList extends Component {
       sort_by: SORT_CHART[value]
     }))
   }
+  handleOrderChange = ({ target }) => {
+    const { value } = target;
+    this.setState(prev => ({
+      ...prev,
+      order: value
+    }))
+  }
   render() {
     const { articles, loading, error, sort_by, order } = this.state
     if (error) return <Error error={error} />
     return (
       <div>
         {loading && <p>...Loading</p>}
-        <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
+        <div className="article-sort-order">
+          <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
+          <OrderSelect onChange={this.handleOrderChange} orderValue={order} />
+        </div>
         {articles && articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
       </div>
     );
