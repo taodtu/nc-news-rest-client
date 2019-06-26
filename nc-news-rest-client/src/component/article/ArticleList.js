@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   loading: false,
   sort_by: 'created_at',
   order: 'desc',
-  limit: 4,
+  limit: 6,
   p: 1
 }
 
@@ -43,6 +43,13 @@ class ArticleList extends Component {
       order: value
     }))
   }
+  handleClick = (pageNumber) => {
+    console.log(pageNumber)
+    this.setState(prev => ({
+      ...prev,
+      p: pageNumber
+    }))
+  }
   render() {
     const { articles, loading, error, sort_by, order, limit, p } = this.state
     if (error) return <Error error={error} />
@@ -54,7 +61,7 @@ class ArticleList extends Component {
           <OrderSelect onChange={this.handleOrderChange} orderValue={order} />
         </div>
         {articles && articles.articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
-        {articles && <Page p={Math.ceil(articles.total_count / limit)} />}
+        {articles && <Page pageTotal={Math.ceil(articles.total_count / limit)} onClick={this.handleClick} p={p} />}
       </div>
     );
   }
@@ -70,6 +77,8 @@ class ArticleList extends Component {
       || prevProps.author !== this.props.author
       || prevState.sort_by !== this.state.sort_by
       || prevState.order !== this.state.order
+      || prevState.limit !== this.state.limit
+      || prevState.p !== this.state.p
     ) {
       this.fetchArticles();
     }

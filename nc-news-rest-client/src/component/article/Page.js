@@ -1,9 +1,16 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
 
-const Page = ({ p }) => {
+const Page = ({ pageTotal, p, onClick }) => {
+ let list = [];
+ for (let i = 1; i <= pageTotal; i++) {
+  list = [...list, i]
+ }
  return (
-  <div>
-   welcome {p}
+  <div className="page-number">
+   {list.map(num => <Button size="small" color="primary" onClick={() => onClick(num)} key={num}
+    variant={num === p ? "contained" : "text"}
+   > {num}</Button>)}
   </div>
  );
 };
