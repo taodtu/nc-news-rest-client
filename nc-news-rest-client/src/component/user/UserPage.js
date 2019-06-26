@@ -36,7 +36,8 @@ class UserPage extends Component {
         {loading && <p>...loading</p>}
         {user && <UserItem user={user} />}
         {user && <ToggleButton left={"Articles"} right={"Comments"} onClick={this.handleListToggle} />}
-        {user && (showArticleList ? <ArticleList author={user.username} /> : <CommentList id={user.username} currentUser={this.props.currentUser} getComments={getCommentsByUser} />)}
+        {user && (showArticleList ? <ArticleList author={user.username} /> : <CommentList id={user.username} currentUser={this.props.currentUser} getComments={getCommentsByUser}
+          render={() => { }} />)}
       </div>
     );
   }

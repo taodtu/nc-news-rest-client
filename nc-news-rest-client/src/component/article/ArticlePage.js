@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { getArticle, getCommentsByArticle } from '../api';
 import Article from './Article';
-import CommentList from '../comment/CommentList'
+import CommentList from '../comment/CommentList';
+import AddComment from '../comment/AddComment';
 import Error from '../error/Error'
 
 const INITIAL_STATE = {
@@ -24,7 +25,9 @@ class ArticlePage extends Component {
         <h4>Article (id:{id}) and Comments </h4>
         <Article {...article} />
         <hr />
-        <CommentList id={id} currentUser={currentUser} getComments={getCommentsByArticle} />
+        <CommentList id={id} currentUser={currentUser} getComments={getCommentsByArticle}
+          render={handleSubmit => <AddComment onSubmit={handleSubmit} />}
+        />
         <hr />
       </div>
     );

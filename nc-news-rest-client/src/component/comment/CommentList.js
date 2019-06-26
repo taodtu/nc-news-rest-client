@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Comment from '../comment/Comment';
 import { deleteComment, addComment } from '../api';
 import DeleteComment from '../button/DeleteComment';
-import AddComment from './AddComment';
 import Error from '../error/Error';
 import SortSelect from '../button/SortSelect';
 import OrderSelect from '../button/OrderSelect';
@@ -31,7 +30,7 @@ class CommentList extends Component {
     if (error) return <Error error={error} />
     return (
       <div>
-        <AddComment onSubmit={this.handleSubmit} />
+        {this.props.render(this.handleSubmit)}
         {loading && <p>...loading</p>}
         <div className="article-sort-order">
           <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
