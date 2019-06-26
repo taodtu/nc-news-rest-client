@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getArticles } from '../api';
 import ArticleItem from './ArticleItem';
 import Error from '../error/Error'
+import SortSelect from '../button/SortSelect';
 
 const INITIAL_STATE = {
   articles: null,
@@ -11,17 +12,33 @@ const INITIAL_STATE = {
   order: 'desc'
 }
 
+const SORT_CHART = {
+  "created_at": 'date',
+  'date': "created_at",
+  "id": "article_id",
+  "article_id": "id",
+  "votes": "votes",
+  "author": "author"
+}
+
 class ArticleList extends Component {
   state = {
     ...INITIAL_STATE
   }
-
+  handleSortChange = ({ target }) => {
+    const { value } = target;
+    this.setState(prev => ({
+      ...prev,
+      sort_by: SORT_CHART[value]
+    }))
+  }
   render() {
-    const { articles, loading, error } = this.state
+    const { articles, loading, error, sort_by, order } = this.state
     if (error) return <Error error={error} />
     return (
       <div>
         {loading && <p>...Loading</p>}
+        <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
         {articles && articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
       </div>
     );
@@ -49,10 +66,11 @@ class ArticleList extends Component {
     });
     getArticles(this.props.topic, this.props.author, this.state.sort_by, this.state.order)
       .then(({ articles }) => {
-        this.setState({
-          ...INITIAL_STATE,
-          articles,
-        })
+        this.setState(prev => ({
+          ...prev,
+          loading: false,
+          articles
+        }))
       })
       .catch(error => {
         this.setState({
