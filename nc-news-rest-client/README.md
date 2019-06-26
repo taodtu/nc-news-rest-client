@@ -8,6 +8,8 @@ Implement **`optimistic response`** for the vote button.
 
 Applying **`slot pattern`** to avoid props drilling.
 
+Page-number style **`pagination`** implemented.
+
 ## Available Scripts
 
 In the project directory, you can run:
