@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getArticles } from '../api';
 import ArticleItem from './ArticleItem';
 import Error from '../error/Error'
-import SortSelect from '../button/SortSelect';
+import { SortSelectWithCommentCount } from '../button/SortSelect';
 import ToggleButton from '../button/ToggleButton';
 import Page from './Page';
 import LimitSelect from '../button/LimitSelect';
@@ -23,7 +23,9 @@ const SORT_CHART = {
   "id": "article_id",
   "article_id": "id",
   "votes": "votes",
-  "author": "author"
+  "author": "author",
+  "comment_count": "comments",
+  "comments": "comment_count"
 }
 
 class ArticleList extends Component {
@@ -68,7 +70,7 @@ class ArticleList extends Component {
       <div>
         {loading && <p>...Loading</p>}
         <div className="article-sort-order">
-          <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
+          <SortSelectWithCommentCount onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
           <ToggleButton left={"desc"} right={"asc"} onClick={this.handleToggle} />
         </div>
         {articles && articles.articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
