@@ -71,7 +71,7 @@ class ArticleList extends Component {
   }
   componentDidMount() {
     this.setState({
-      ...this.state,
+      ...INITIAL_STATE,
       loading: true
     });
     this.fetchArticles(1)
@@ -91,10 +91,10 @@ class ArticleList extends Component {
   }
   fetchArticles = (page) => {
     const { sort_by, order, limit, p } = this.state
-    this.setState({
-      ...this.state,
+    this.setState(prev => ({
+      ...prev,
       loading: true
-    });
+    }));
     getArticles(this.props.topic, this.props.author, sort_by, order, limit, p)
       .then(({ articles }) => {
         this.setState(prev => ({

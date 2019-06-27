@@ -39,7 +39,7 @@ class CommentList extends Component {
   }
   componentDidMount() {
     this.setState({
-      ...this.state,
+      ...INITIAL_STATE,
       loading: true
     });
     this.props.getComments(this.props.id)
@@ -60,10 +60,10 @@ class CommentList extends Component {
     if (prevState.sort_by !== this.state.sort_by
       || prevState.order !== this.state.order
     ) {
-      this.setState({
-        ...this.state,
+      this.setState(prev => ({
+        ...prev,
         loading: true
-      });
+      }));
       this.props.getComments(this.props.id, this.state.sort_by, this.state.order)
         .then(comments => {
           this.setState(prev => ({
@@ -102,10 +102,10 @@ class CommentList extends Component {
     const { id, currentUser } = this.props;
     addComment(id, { username: currentUser, body: text })
       .then(comment => {
-        this.setState({
-          ...this.state,
+        this.setState(prev => ({
+          ...prev,
           comments: [comment, ...this.state.comments]
-        })
+        }))
       })
       .catch(error => {
         this.setState({
@@ -119,10 +119,10 @@ class CommentList extends Component {
     deleteComment(id)
       .then(res => {
         if (res.status === 204) {
-          this.setState({
-            ...this.state,
+          this.setState(prev => ({
+            ...prev,
             comments: comments.filter(comment => comment.comment_id !== id)
-          })
+          }))
         }
       })
       .catch(error => {
