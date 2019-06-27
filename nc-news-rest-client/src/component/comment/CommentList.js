@@ -5,6 +5,7 @@ import DeleteComment from '../button/DeleteComment';
 import Error from '../error/Error';
 import ToggleButton from '../button/ToggleButton';
 import SortSelect from '../button/SortSelect';
+import { COMMENT_SORT_CHART } from '../constant';
 
 const INITIAL_STATE = {
   comments: null,
@@ -13,14 +14,7 @@ const INITIAL_STATE = {
   sort_by: 'created_at',
   order: 'desc'
 }
-const SORT_CHART = {
-  "created_at": 'date',
-  'date': "created_at",
-  "id": "comment_id",
-  "comment_id": "id",
-  "votes": "votes",
-  "author": "author"
-}
+
 class CommentList extends Component {
   state = {
     ...INITIAL_STATE
@@ -33,7 +27,7 @@ class CommentList extends Component {
         {this.props.render && this.props.render(this.handleSubmit)}
         {loading && <p>...loading</p>}
         <div className="article-sort-order">
-          <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
+          <SortSelect onChange={this.handleSortChange} sortValue={COMMENT_SORT_CHART[sort_by]} />
           <ToggleButton left={"desc"} right={"asc"} onClick={this.handleToggle} />
         </div>
         {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment}>
@@ -90,7 +84,7 @@ class CommentList extends Component {
     const { value } = target;
     this.setState(prev => ({
       ...prev,
-      sort_by: SORT_CHART[value]
+      sort_by: COMMENT_SORT_CHART[value]
     }))
   }
   handleToggle = (order) => {
