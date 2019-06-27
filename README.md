@@ -1,4 +1,4 @@
-# A React Northcoders-News Client
+# A React Northcoders-NEWS Client
 
 This App is hosted on [here](https://tao-nc-news-rest-client.netlify.com/) and the server app is hosted on [Github](https://github.com/taodtu/nc-news)
 
