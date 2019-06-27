@@ -1,12 +1,12 @@
 # A React Northcoders-News Client
 
-This App web is hosted on [here](https://tao-nc-news-rest-client.netlify.com/). The server app is hosted on [here](https://nc-news-rest-api.herokuapp.com/) and the source code can be found on [Github](https://github.com/taodtu/nc-news)
+This App web is hosted on [Netlify](https://tao-nc-news-rest-client.netlify.com/). The server app is hosted on [Heroku](https://nc-news-rest-api.herokuapp.com/) and the source code can be found on [Github](https://github.com/taodtu/nc-news)
 
 Northcoders News is a social news aggregation, web content rating, and discussion website. Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API. Users can also add comments about an article. Comments can also be up or down voted. A user can add comments and remove any comments which they have added.
 
 ## Features
 
-- All the data manipulations on array and object are ensured **`not mutating`** the original data by using destructuring and spread operator. In addtional to fullfill the northcoder project requirement, an UserPage is created for more advanced functionality.
+- All the data manipulations on array and object are ensured **`not mutating`** the original data by using destructuring and spread operator. In addtional to fullfilling the northcoder project requirement, an UserPage is created for more advanced functionality.
 
 - Maximize **`component reuse`**, such as the voting button, toggle-button, article list, sort-select.
 
