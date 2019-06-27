@@ -5,7 +5,7 @@ import Footer from './component/Footer'
 import { Link, Router } from '@reach/router';
 import ArticleList from './component/article/ArticleList';
 import ArticlePage from './component/article/ArticlePage';
-import Error from './component/error/Error';
+import ErrorMsg from './component/error/Error';
 import UserPage from './component/user/UserPage';
 import { Select, MenuItem } from '@material-ui/core';
 import './App.css';
@@ -45,7 +45,7 @@ class App extends Component {
             <UserPage path="/users/:author" currentUser={currentUser} />
             <ArticleList path="/" />
             <ArticlePage path="/articles/:id" currentUser={currentUser} />
-            <Error default />
+            <ErrorMsg default />
           </Router>
         </div>
         <Footer />

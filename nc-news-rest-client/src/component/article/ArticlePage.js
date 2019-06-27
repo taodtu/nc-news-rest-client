@@ -3,7 +3,7 @@ import { getArticle, getCommentsByArticle } from '../api';
 import Article from './Article';
 import CommentList from '../comment/CommentList';
 import AddComment from '../comment/AddComment';
-import Error from '../error/Error'
+import ErrorMsg from '../error/Error'
 
 const INITIAL_STATE = {
   article: null,
@@ -18,7 +18,7 @@ class ArticlePage extends Component {
   render() {
     const { id, currentUser } = this.props;
     const { loading, error, article } = this.state;
-    if (error) return <Error error={error} />
+    if (error) return <ErrorMsg error={error} />
     return (
       <div>
         {loading && <p>...loading</p>}

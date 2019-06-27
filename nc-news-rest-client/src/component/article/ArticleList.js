@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getArticles } from '../api';
 import ArticleItem from './ArticleItem';
-import Error from '../error/Error'
+import ErrorMsg from '../error/Error'
 import { SortSelectWithCommentCount } from '../button/SortSelect';
 import ToggleButton from '../button/ToggleButton';
 import Page from './Page';
@@ -55,7 +55,7 @@ class ArticleList extends Component {
   }
   render() {
     const { articles, loading, error, sort_by, limit, p } = this.state
-    if (error) return <Error error={error} />
+    if (error) return <ErrorMsg error={error} />
     return (
       <div>
         {loading && <p>...Loading</p>}

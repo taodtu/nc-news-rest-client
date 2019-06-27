@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Comment from '../comment/Comment';
 import { deleteComment, addComment } from '../api';
 import DeleteComment from '../button/DeleteComment';
-import Error from '../error/Error';
+import ErrorMsg from '../error/Error';
 import ToggleButton from '../button/ToggleButton';
 import SortSelect from '../button/SortSelect';
 import { COMMENT_SORT_CHART } from '../constant';
@@ -21,7 +21,7 @@ class CommentList extends Component {
   }
   render() {
     const { comments, loading, error, sort_by } = this.state;
-    if (error) return <Error error={error} />
+    if (error) return <ErrorMsg error={error} />
     return (
       <div>
         {this.props.render && this.props.render(this.handleSubmit)}

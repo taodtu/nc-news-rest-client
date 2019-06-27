@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UserItem from './UserItem';
 import { getUser, getCommentsByUser } from '../api';
 import ToggleButton from '../button/ToggleButton'
-import Error from '../error/Error';
+import ErrorMsg from '../error/Error';
 import ArticleList from '../article/ArticleList';
 import CommentList from '../comment/CommentList';
 
@@ -29,7 +29,7 @@ class UserPage extends Component {
   }
   render() {
     const { user, loading, error, showArticleList } = this.state;
-    if (error) return <Error error={error} />
+    if (error) return <ErrorMsg error={error} />
     return (
       <div>
         <hr />

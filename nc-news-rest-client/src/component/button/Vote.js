@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
-import Error from '../error/Error'
+import ErrorMsg from '../error/Error'
 
 const INITIAL_STATE = {
   vote: 0,
@@ -23,23 +23,18 @@ class Vote extends Component {
       vote: prev.vote + change,
     }));
     this.props.handleVote(this.props.id, { inc_votes: change })
-      .catch(err => {
+      .catch(error => {
         this.setState(prev => ({
           ...INITIAL_STATE,
           vote: prev.vote - change,
+          error
         }))
-      })
-      .catch(error => {
-        this.setState({
-          ...INITIAL_STATE,
-          error,
-        })
       })
   }
   render() {
     const { votes } = this.props;
     const { vote, error, loading } = this.state;
-    if (error) return <Error error={error} />
+    if (error) return <ErrorMsg error={error} />
     if (loading) return <p>...loading</p>
     return (
       <div className="vote-block">
