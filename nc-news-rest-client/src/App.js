@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Navigation from './component/Navigation'
+import Navigation from './component/Navigation';
+import UserSelect from './component/button/UserSelect';
 import Header from './component/Header';
 import Footer from './component/Footer'
 import { Link, Router } from '@reach/router';
@@ -7,7 +8,6 @@ import ArticleList from './component/article/ArticleList';
 import ArticlePage from './component/article/ArticlePage';
 import ErrorMsg from './component/error/Error';
 import UserPage from './component/user/UserPage';
-import { Select, MenuItem } from '@material-ui/core';
 import './App.css';
 
 class App extends Component {
@@ -26,19 +26,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <label>Current Author:</label>
-        <Select value={currentUser} autoWidth={true} onChange={this.handleChange}
-        >
-          <MenuItem value="jessjelly">jessjelly</MenuItem>
-          <MenuItem value="tickle122">tickle122</MenuItem>
-          <MenuItem value="grumpy19">grumpy19</MenuItem>
-          <MenuItem value="happyamy2016">happyamy2016</MenuItem>
-          <MenuItem value="cooljmessy">cooljmessy</MenuItem>
-          <MenuItem value="weegembump">weegembump</MenuItem>
-        </Select>
+        <UserSelect currentUser={currentUser} handleChange={this.handleChange} />
         <Link to={`/users/${currentUser}`} className="title-link">User</Link>
         <div className="nav" ><Navigation /></div>
         <div className="body">
-
           <Router>
             <ArticleList path="/topics/:topic" />
             {/* <ArticleList path="/users/:author" /> */}
