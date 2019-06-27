@@ -21,11 +21,11 @@ export const getArticle = (article_id) => {
 };
 
 export const updateArticle = (id, body) => {
- return request.patch(`/articles/${id}`, { ...body }).then(({ data }) => data.article)
+ return request.patch(`/articles/${id}`, body).then(({ data }) => data.article)
 };
 
 export const addComment = (article_id, body) => {
- return request.post(`/articles/${article_id}/comments`, { ...body }).then(({ data }) => data.comment)
+ return request.post(`/articles/${article_id}/comments`, body).then(({ data }) => data.comment)
 };
 
 export const getCommentsByArticle = (article_id, sort_by, order) => {
@@ -37,7 +37,7 @@ export const getCommentsByUser = (username, sort_by, order) => {
 };
 
 export const updateComment = (id, body) => {
- return request.patch(`/comments/${id}`, { ...body }).then(({ data }) => data.comment)
+ return request.patch(`/comments/${id}`, body).then(({ data }) => data.comment)
 };
 
 export const deleteComment = (id) => {
