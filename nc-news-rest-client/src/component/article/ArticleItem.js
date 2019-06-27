@@ -10,7 +10,6 @@ const ArticleItem = ({ article: { article_id, title, comment_count, topic, votes
         <Link to={`/articles/${article_id}`} ><Button size="small" color="primary"> <h3>Title: {title} </h3></Button></Link>
       </div>
       <div className={Style.article}>
-        <span className={Style.tag}>article_id: {article_id} </span>
         <span className={Style.tag}><Link to={`/topics/${topic}`} ><Button size="small" color="primary">topic: {topic} </Button></Link></span>
         <span className={Style.tag}><Link to={`/users/${author}`} ><Button size="small" color="primary">author:  {author}</Button></Link></span>
       </div>

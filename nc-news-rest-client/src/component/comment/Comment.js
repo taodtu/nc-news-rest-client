@@ -12,7 +12,6 @@ const Comment = ({ comment_id,
   return (
     <div className={Style.article} >
       <div className={Style.left}>
-        <span className={Style.tag}>Comment_id: {comment_id}</span>
         <span className={Style.tag}>Author: {author}</span>
         <span className={Style.tag}>Date: {created_at.split("T")[0]}</span>
       </div>

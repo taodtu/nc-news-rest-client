@@ -22,7 +22,7 @@ class ArticlePage extends Component {
     return (
       <div>
         {loading && <p>...loading</p>}
-        <h4>Article (id:{id}) and Comments </h4>
+        <h3>Article and Its Comments </h3>
         {article && <Article {...article} />}
         <hr />
         <CommentList id={id} currentUser={currentUser} getComments={getCommentsByArticle}
