@@ -13,7 +13,6 @@ const LimitSelect = ({ onChange, limit }) => {
    >
     {list.map(num => <MenuItem key={num} value={num}
     > {num}</MenuItem>)}
-
    </Select>
   </div>
  );
