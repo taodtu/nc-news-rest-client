@@ -38,11 +38,11 @@ class Vote extends Component {
     if (loading) return <p>...loading</p>
     return (
       <div className="vote-block">
-        <p>Votes: {votes + vote}</p>
         <div className="vote">
           <Button variant="outlined" size="small" color="primary" disabled={vote > 0}
             onClick={this.voteUp}> + vote! </Button>
         </div>
+        <p>Votes: {votes + vote}</p>
         <div className="vote">
           <Button variant="outlined" size="small" color="secondary" disabled={vote < 0}
             onClick={this.voteDown}> - vote! </Button>
