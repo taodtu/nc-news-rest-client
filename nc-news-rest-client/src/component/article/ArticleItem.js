@@ -17,7 +17,7 @@ const ArticleItem = ({ article: { article_id, title, comment_count, topic, votes
       <div className={Style.article}>
         <span className={Style.tag}>Votes: {votes} </span>
         <span className={Style.tag}>Comments: {comment_count} </span>
-        <span className={Style.tag}>Date:  {created_at}</span></div>
+        <span className={Style.tag}>Date:  {created_at.split("T")[0]}</span></div>
     </div>
   )
 

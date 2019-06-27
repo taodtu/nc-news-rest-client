@@ -23,7 +23,7 @@ class ArticlePage extends Component {
       <div>
         {loading && <p>...loading</p>}
         <h4>Article (id:{id}) and Comments </h4>
-        <Article {...article} />
+        {article && <Article {...article} />}
         <hr />
         <CommentList id={id} currentUser={currentUser} getComments={getCommentsByArticle}
           render={handleSubmit => <AddComment onSubmit={handleSubmit} />}

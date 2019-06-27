@@ -3,8 +3,8 @@ import Comment from '../comment/Comment';
 import { deleteComment, addComment } from '../api';
 import DeleteComment from '../button/DeleteComment';
 import Error from '../error/Error';
+import ToggleButton from '../button/ToggleButton';
 import SortSelect from '../button/SortSelect';
-import OrderSelect from '../button/OrderSelect';
 
 const INITIAL_STATE = {
   comments: null,
@@ -26,7 +26,7 @@ class CommentList extends Component {
     ...INITIAL_STATE
   }
   render() {
-    const { comments, loading, error, sort_by, order } = this.state;
+    const { comments, loading, error, sort_by } = this.state;
     if (error) return <Error error={error} />
     return (
       <div>
@@ -34,7 +34,7 @@ class CommentList extends Component {
         {loading && <p>...loading</p>}
         <div className="article-sort-order">
           <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
-          <OrderSelect onChange={this.handleOrderChange} orderValue={order} />
+          <ToggleButton left={"desc"} right={"asc"} onClick={this.handleToggle} />
         </div>
         {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment}>
           <DeleteComment comment_id={comment.comment_id} handleDelete={this.handleDelete} author={comment.author} />
@@ -93,12 +93,16 @@ class CommentList extends Component {
       sort_by: SORT_CHART[value]
     }))
   }
-  handleOrderChange = ({ target }) => {
-    const { value } = target;
-    this.setState(prev => ({
-      ...prev,
-      order: value
-    }))
+  handleToggle = (order) => {
+    order === "desc"
+      ? this.setState(prev => ({
+        ...prev,
+        order: "desc"
+      }))
+      : this.setState(prev => ({
+        ...prev,
+        order: "asc"
+      }))
   }
   handleSubmit = (text) => {
     const { id, currentUser } = this.props;

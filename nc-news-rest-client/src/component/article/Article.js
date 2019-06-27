@@ -19,7 +19,7 @@ const Article = ({
     <span className={Style.tag}><Link to={`/topics/${topic}`} >topic: {topic} </Link></span>
     <span className={Style.tag}><Link to={`/users/${author}`} >
      Author: {author}</Link></span>
-    <span className={Style.tag}>Date: {created_at}</span>
+    <span className={Style.tag}>Date: {created_at.split("T")[0]}</span>
     <span className={Style.tag}>Comments: {comment_count}</span>
    </div>
    <div className={Style.mid}>

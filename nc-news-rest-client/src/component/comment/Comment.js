@@ -14,7 +14,7 @@ const Comment = ({ comment_id,
       <div className={Style.left}>
         <span className={Style.tag}>Comment_id: {comment_id}</span>
         <span className={Style.tag}>Author: {author}</span>
-        <span className={Style.tag}>Date: {created_at}</span>
+        <span className={Style.tag}>Date: {created_at.split("T")[0]}</span>
       </div>
       <div className={Style.mid}>
         <p>Comment: {body}</p>
