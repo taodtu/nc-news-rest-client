@@ -30,7 +30,7 @@ class CommentList extends Component {
     if (error) return <Error error={error} />
     return (
       <div>
-        {this.props.render(this.handleSubmit)}
+        {this.props.render && this.props.render(this.handleSubmit)}
         {loading && <p>...loading</p>}
         <div className="article-sort-order">
           <SortSelect onChange={this.handleSortChange} sortValue={SORT_CHART[sort_by]} />
