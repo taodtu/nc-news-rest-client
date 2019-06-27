@@ -31,7 +31,7 @@ class CommentList extends Component {
           <ToggleButton left={"desc"} right={"asc"} onClick={this.handleToggle} />
         </div>
         {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment}>
-          <DeleteComment comment_id={comment.comment_id} handleDelete={this.handleDelete} author={comment.author} />
+          <DeleteComment comment_id={comment.comment_id} handleDelete={this.handleDelete} author={comment.author} currentUser={this.props.currentUser} />
         </Comment>)
         }
       </div>
@@ -114,26 +114,23 @@ class CommentList extends Component {
         })
       })
   }
-  handleDelete = (id, author) => {
-    const { currentUser } = this.props;
+  handleDelete = (id) => {
     const { comments } = this.state;
-    currentUser !== author
-      ? alert('Author can only delete comment made by him/her, please change the current author to delete the comment')
-      : deleteComment(id)
-        .then(res => {
-          if (res.status === 204) {
-            this.setState({
-              ...this.state,
-              comments: comments.filter(comment => comment.comment_id !== id)
-            })
-          }
-        })
-        .catch(error => {
+    deleteComment(id)
+      .then(res => {
+        if (res.status === 204) {
           this.setState({
             ...this.state,
-            error,
+            comments: comments.filter(comment => comment.comment_id !== id)
           })
+        }
+      })
+      .catch(error => {
+        this.setState({
+          ...this.state,
+          error,
         })
+      })
   }
 }
 
