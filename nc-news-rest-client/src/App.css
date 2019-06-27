@@ -17,7 +17,11 @@ h3{
   font-family:  Arial,  sans-serif;
 }
 .title-link{
-  margin: 0.5em 1em 2em;
+  background-color: rgb(160, 160, 160);
+  padding: 0.3em 0.5em 0.3em;
+  margin: 0.2em 0.2em;
+  border-radius: 0.6em;
+  color: rgb(221, 243, 236);
 }
 label{
   margin: 0em 0.8em 1.5em;
