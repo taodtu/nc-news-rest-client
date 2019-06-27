@@ -1,6 +1,6 @@
 ## Features
 
-All the data manipulations on array and object are ensured **`not mutating`** the original data by using destructuring and spread operator.
+All the data manipulations on array and object are ensured **`not mutating`** the original data by using destructuring and spread operator. In addtional to fullfill the northcoder project requirement, an UserPage is created for more advanced functionality.
 
 Maximize **`component reuse`**, such as the voting button, toggle-button, article list, sort-select.
 
