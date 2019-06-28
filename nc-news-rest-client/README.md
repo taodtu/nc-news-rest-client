@@ -30,6 +30,8 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 - Routing with [@reach/router v1.1.0](https://reach.tech/router).
 
+- Fallback image handled with [react-image v2.1.3](https://www.npmjs.com/package/react-image)
+
 ## Installation
 - git clone https://github.com/taodtu/nc-news-rest-client.git
 - cd nc-news-rest-client/nc-news-rest-client.

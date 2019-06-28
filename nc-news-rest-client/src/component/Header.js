@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './034-microphone.svg';
+import logo from './icon/034-microphone.svg';
 
 const Header = () => {
  return (
