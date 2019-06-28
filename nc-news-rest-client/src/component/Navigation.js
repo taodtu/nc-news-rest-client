@@ -14,7 +14,6 @@ class Navigation extends Component {
   }
   componentDidMount() {
     this.setState({
-      ...this.state,
       loading: true
     });
     getTopics()

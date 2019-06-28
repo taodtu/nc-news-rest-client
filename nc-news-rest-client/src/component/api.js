@@ -41,6 +41,6 @@ export const updateComment = (id, body) => {
 };
 
 export const deleteComment = (id) => {
- return request.delete(`/comments/${id}`).then(response => response)
+ return request.delete(`/comments/${id}`)
 };
 

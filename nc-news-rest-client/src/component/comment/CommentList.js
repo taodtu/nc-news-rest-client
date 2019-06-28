@@ -60,17 +60,15 @@ class CommentList extends Component {
     if (prevState.sort_by !== this.state.sort_by
       || prevState.order !== this.state.order
     ) {
-      this.setState(prev => ({
-        ...prev,
+      this.setState({
         loading: true
-      }));
+      });
       this.props.getComments(this.props.id, this.state.sort_by, this.state.order)
         .then(comments => {
-          this.setState(prev => ({
-            ...prev,
+          this.setState({
             loading: false,
             comments,
-          }))
+          })
         })
         .catch(error => {
           this.setState({
@@ -82,52 +80,41 @@ class CommentList extends Component {
   }
   handleSortChange = ({ target }) => {
     const { value } = target;
-    this.setState(prev => ({
-      ...prev,
+    this.setState({
       sort_by: COMMENT_SORT_CHART[value]
-    }))
+    })
   }
   handleToggle = (order) => {
-    order === "desc"
-      ? this.setState(prev => ({
-        ...prev,
-        order: "desc"
-      }))
-      : this.setState(prev => ({
-        ...prev,
-        order: "asc"
-      }))
+    this.setState({
+      order
+    })
   }
   handleSubmit = (text) => {
     const { id, currentUser } = this.props;
     addComment(id, { username: currentUser, body: text })
       .then(comment => {
         this.setState(prev => ({
-          ...prev,
-          comments: [comment, ...this.state.comments]
+          comments: [comment, ...prev.comments]
         }))
       })
       .catch(error => {
         this.setState({
-          ...this.state,
+          ...INITIAL_STATE,
           error,
         })
       })
   }
   handleDelete = (id) => {
-    const { comments } = this.state;
     deleteComment(id)
-      .then(res => {
-        if (res.status === 204) {
-          this.setState(prev => ({
-            ...prev,
-            comments: comments.filter(comment => comment.comment_id !== id)
-          }))
-        }
+      .then(() => {
+        this.setState(({ comments }) => ({
+          comments: comments.filter(comment => comment.comment_id !== id)
+        }))
+
       })
       .catch(error => {
         this.setState({
-          ...this.state,
+          ...INITIAL_STATE,
           error,
         })
       })

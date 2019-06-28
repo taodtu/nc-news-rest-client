@@ -34,7 +34,7 @@ class ArticlePage extends Component {
   }
   componentDidMount() {
     this.setState({
-      ...this.state,
+      ...INITIAL_STATE,
       loading: true
     });
     getArticle(this.props.id)

@@ -4,7 +4,7 @@ import { Select, MenuItem } from '@material-ui/core';
 const LimitSelect = ({ onChange, limit }) => {
  let list = [];
  for (let i = 1; i <= 12; i++) {
-  list = [...list, i]
+  list.push(i);
  }
  return (
   <div className="sort">

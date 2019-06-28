@@ -24,34 +24,25 @@ class ArticleList extends Component {
   }
   handleSortChange = ({ target }) => {
     const { value } = target;
-    this.setState(prev => ({
-      ...prev,
+    this.setState({
       sort_by: ARTICLE_SORT_CHART[value]
-    }))
+    })
   }
   handleToggle = (order) => {
-    order === "desc"
-      ? this.setState(prev => ({
-        ...prev,
-        order: "desc"
-      }))
-      : this.setState(prev => ({
-        ...prev,
-        order: "asc"
-      }))
+    this.setState({
+      order
+    })
   }
   handleLimitChange = ({ target }) => {
     const { value } = target;
-    this.setState(prev => ({
-      ...prev,
+    this.setState({
       limit: value
-    }))
+    })
   }
   handlePageClick = (pageNumber) => {
-    this.setState(prev => ({
-      ...prev,
+    this.setState({
       p: pageNumber
-    }))
+    })
   }
   render() {
     const { articles, loading, error, sort_by, limit, p } = this.state
@@ -91,18 +82,16 @@ class ArticleList extends Component {
   }
   fetchArticles = (page) => {
     const { sort_by, order, limit, p } = this.state
-    this.setState(prev => ({
-      ...prev,
+    this.setState({
       loading: true
-    }));
+    });
     getArticles(this.props.topic, this.props.author, sort_by, order, limit, p)
       .then(({ articles }) => {
-        this.setState(prev => ({
-          ...prev,
+        this.setState({
           loading: false,
           p: page,
           articles
-        }))
+        })
       })
       .catch(error => {
         this.setState({

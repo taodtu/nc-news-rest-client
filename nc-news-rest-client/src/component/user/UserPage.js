@@ -18,14 +18,12 @@ class UserPage extends Component {
   }
   handleListToggle = (listName) => {
     listName === "Articles"
-      ? this.setState(prev => ({
-        ...prev,
+      ? this.setState({
         showArticleList: true
-      }))
-      : this.setState(prev => ({
-        ...prev,
+      })
+      : this.setState({
         showArticleList: false
-      }))
+      })
   }
   render() {
     const { user, loading, error, showArticleList } = this.state;
@@ -50,7 +48,6 @@ class UserPage extends Component {
   }
   fetchUser = () => {
     this.setState({
-      ...this.state,
       loading: true
     });
     getUser(this.props.author)
