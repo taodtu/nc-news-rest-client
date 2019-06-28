@@ -22,28 +22,6 @@ class ArticleList extends Component {
   state = {
     ...INITIAL_STATE
   }
-  handleSortChange = ({ target }) => {
-    const { value } = target;
-    this.setState({
-      sort_by: ARTICLE_SORT_CHART[value]
-    })
-  }
-  handleToggle = (order) => {
-    this.setState({
-      order
-    })
-  }
-  handleLimitChange = ({ target }) => {
-    const { value } = target;
-    this.setState({
-      limit: value
-    })
-  }
-  handlePageClick = (pageNumber) => {
-    this.setState({
-      p: pageNumber
-    })
-  }
   render() {
     const { articles, loading, error, sort_by, limit, p } = this.state
     if (error) return <ErrorMsg error={error} />
@@ -99,6 +77,28 @@ class ArticleList extends Component {
           error,
         })
       })
+  }
+  handleSortChange = ({ target }) => {
+    const { value } = target;
+    this.setState({
+      sort_by: ARTICLE_SORT_CHART[value]
+    })
+  }
+  handleToggle = (order) => {
+    this.setState({
+      order
+    })
+  }
+  handleLimitChange = ({ target }) => {
+    const { value } = target;
+    this.setState({
+      limit: value
+    })
+  }
+  handlePageClick = (pageNumber) => {
+    this.setState({
+      p: pageNumber
+    })
   }
 }
 

@@ -14,7 +14,6 @@ const INITIAL_STATE = {
   sort_by: 'created_at',
   order: 'desc'
 }
-
 class CommentList extends Component {
   state = {
     ...INITIAL_STATE
@@ -38,14 +37,23 @@ class CommentList extends Component {
     );
   }
   componentDidMount() {
+    this.fetchComments();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.sort_by !== this.state.sort_by
+      || prevState.order !== this.state.order
+    ) {
+      this.fetchComments();
+    }
+  }
+  fetchComments = () => {
     this.setState({
-      ...INITIAL_STATE,
       loading: true
     });
-    this.props.getComments(this.props.id)
+    this.props.getComments(this.props.id, this.state.sort_by, this.state.order)
       .then(comments => {
         this.setState({
-          ...INITIAL_STATE,
+          loading: false,
           comments,
         })
       })
@@ -55,28 +63,6 @@ class CommentList extends Component {
           error,
         })
       })
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.sort_by !== this.state.sort_by
-      || prevState.order !== this.state.order
-    ) {
-      this.setState({
-        loading: true
-      });
-      this.props.getComments(this.props.id, this.state.sort_by, this.state.order)
-        .then(comments => {
-          this.setState({
-            loading: false,
-            comments,
-          })
-        })
-        .catch(error => {
-          this.setState({
-            ...INITIAL_STATE,
-            error,
-          })
-        })
-    }
   }
   handleSortChange = ({ target }) => {
     const { value } = target;
