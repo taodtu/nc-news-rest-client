@@ -4,6 +4,7 @@ import Article from './Article';
 import AddComment from '../comment/AddComment';
 import ErrorMsg from '../error/Error';
 import { CommentListWithUser } from '../UserContext';
+import Loader from 'react-loader-spinner';
 
 const INITIAL_STATE = {
   article: null,
@@ -21,7 +22,12 @@ class ArticlePage extends Component {
     if (error) return <ErrorMsg error={error} />
     return (
       <div>
-        {loading && <p>...loading</p>}
+        {loading && <Loader
+          type="Puff"
+          color="#00BFFF"
+          height="100"
+          width="100"
+        />}
         <h3>Article and Its Comments </h3>
         {article && <Article {...article} />}
         <hr />

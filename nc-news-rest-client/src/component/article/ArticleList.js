@@ -7,6 +7,7 @@ import ToggleButton from '../button/ToggleButton';
 import Page from './Page';
 import LimitSelect from '../button/LimitSelect';
 import { ARTICLE_SORT_CHART } from '../constant';
+import Loader from 'react-loader-spinner';
 
 const INITIAL_STATE = {
   articles: null,
@@ -27,7 +28,12 @@ class ArticleList extends Component {
     if (error) return <ErrorMsg error={error} />
     return (
       <div>
-        {loading && <p>...Loading</p>}
+        {loading && <Loader
+          type="Puff"
+          color="#00BFFF"
+          height="100"
+          width="100"
+        />}
         <div className="article-sort-order">
           <SortSelect onChange={this.handleSortChange}
             sortValue={ARTICLE_SORT_CHART[sort_by]}

@@ -6,6 +6,7 @@ import ErrorMsg from '../error/Error';
 import ToggleButton from '../button/ToggleButton';
 import SortSelect from '../button/SortSelect';
 import { COMMENT_SORT_CHART } from '../constant';
+import Loader from 'react-loader-spinner';
 
 const INITIAL_STATE = {
   comments: null,
@@ -24,7 +25,12 @@ class CommentList extends Component {
     return (
       <div>
         {this.props.render && this.props.render(this.handleSubmit)}
-        {loading && <p>...loading</p>}
+        {loading && <Loader
+          type="Puff"
+          color="#00BFFF"
+          height="100"
+          width="100"
+        />}
         <div className="article-sort-order">
           <SortSelect onChange={this.handleSortChange}
             sortValue={COMMENT_SORT_CHART[sort_by]}

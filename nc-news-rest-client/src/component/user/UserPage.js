@@ -5,6 +5,7 @@ import ToggleButton from '../button/ToggleButton'
 import ErrorMsg from '../error/Error';
 import ArticleList from '../article/ArticleList';
 import { CommentListWithUser } from '../UserContext';
+import Loader from 'react-loader-spinner';
 
 const INITIAL_STATE = {
   user: null,
@@ -27,7 +28,12 @@ class UserPage extends Component {
     return (
       <div>
         <hr />
-        {loading && <p>...loading</p>}
+        {loading && <Loader
+          type="Puff"
+          color="#00BFFF"
+          height="100"
+          width="100"
+        />}
         {user && <UserItem user={user} />}
         {user && <ToggleButton left={"Articles"} right={"Comments"} onClick={this.handleListToggle} />}
         {user && (ShowList === "Articles" ? <ArticleList author={user.username} />
