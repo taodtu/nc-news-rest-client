@@ -4,8 +4,7 @@ import { getUser, getCommentsByUser } from '../api';
 import ToggleButton from '../button/ToggleButton'
 import ErrorMsg from '../error/Error';
 import ArticleList from '../article/ArticleList';
-import CommentList from '../comment/CommentList';
-import { UserContext } from '../UserContext';
+import { CommentListWithUser } from '../UserContext';
 
 const INITIAL_STATE = {
   user: null,
@@ -32,9 +31,7 @@ class UserPage extends Component {
         {user && <UserItem user={user} />}
         {user && <ToggleButton left={"Articles"} right={"Comments"} onClick={this.handleListToggle} />}
         {user && (ShowList === "Articles" ? <ArticleList author={user.username} />
-          : <UserContext.Consumer>
-            {value => <CommentList id={user.username} currentUser={value} getComments={getCommentsByUser} />}
-          </UserContext.Consumer>
+          : <CommentListWithUser id={user.username} getComments={getCommentsByUser} />
         )}
       </div>
     );

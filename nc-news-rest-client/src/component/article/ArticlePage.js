@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { getArticle, getCommentsByArticle } from '../api';
 import Article from './Article';
-import CommentList from '../comment/CommentList';
 import AddComment from '../comment/AddComment';
 import ErrorMsg from '../error/Error';
-import { UserContext } from '../UserContext';
+import { CommentListWithUser } from '../UserContext';
 
 const INITIAL_STATE = {
   article: null,
@@ -26,11 +25,9 @@ class ArticlePage extends Component {
         <h3>Article and Its Comments </h3>
         {article && <Article {...article} />}
         <hr />
-        <UserContext.Consumer>
-          {value => <CommentList id={id} currentUser={value} getComments={getCommentsByArticle}
-            render={handleSubmit => <AddComment onSubmit={handleSubmit} />}
-          />}
-        </UserContext.Consumer>
+        <CommentListWithUser id={id} getComments={getCommentsByArticle}
+          render={handleSubmit => <AddComment onSubmit={handleSubmit} />}
+        />
         <hr />
       </div>
     );

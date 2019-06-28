@@ -14,11 +14,11 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 - Applying **`Render Props`** pattern to reuse the CommentList in both Article and User Page, where a AddComment is deployed inside of Article page which needs access to CommentList method. 
 
-- Adopting **`Higher Order Component (HOC)`** pattern in SortSelect component to make it reusable with added properties in ArticleList and CommentList component.
+- Applying **`slot pattern`** and **`ContextAPI`** to avoid props drilling.
+
+- Adopting **`Higher Order Component (HOC)`** pattern to wrap CommentList with **`Context.Consumer`** in both ArticlePage and UserPage for enhanced reusable component.
 
 - Implement **`optimistic response`** for the vote button.
-
-- Applying **`slot pattern`** and **`ContextAPI`** to avoid props drilling.
 
 - Page-number style **`pagination`** implemented.
 
