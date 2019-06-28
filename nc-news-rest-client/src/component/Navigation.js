@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-import { getTopics } from './api'
+import { getTopics } from './api';
+import Loader from 'react-loader-spinner';
 
 const INITIAL_STATE = {
   topics: null,
@@ -35,7 +36,7 @@ class Navigation extends Component {
     return (
       <nav >
         <Link to={`/`} className="title-link">Home</Link>
-        {loading && <p>...Loading</p>}
+        {loading && <Loader type="ThreeDots" color="#somecolor" height={80} width={80} />}
         {error && <p>error: {error}</p>}
         {topics && topics.map(topic => <Link to={`/topics/${topic.slug}`} key={topic.slug} className="title-link">{topic.slug}</Link>
         )}
