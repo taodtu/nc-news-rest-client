@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 const Page = ({ pageTotal, p, onClick }) => {
  let list = [];
  for (let i = 1; i <= pageTotal; i++) {
-  list = [...list, i]
+  list.push(i)
  }
  return (
   <div className="page-number">
