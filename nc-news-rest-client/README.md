@@ -32,9 +32,9 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 ## Installation
 - git clone https://github.com/taodtu/nc-news-rest-client.git
-- cd nc-news-rest-client/nc-news-rest-client
-- npm install
-- npm start
+- cd nc-news-rest-client/nc-news-rest-client.
+- npm install.
+- npm start.
 - visit http://localhost:3000
 
 
