@@ -12,5 +12,4 @@ const SortSelect = ({ onChange, sortValue, options }) => {
  );
 };
 
-
 export default SortSelect;
