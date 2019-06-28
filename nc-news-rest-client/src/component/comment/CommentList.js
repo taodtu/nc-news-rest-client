@@ -26,7 +26,9 @@ class CommentList extends Component {
         {this.props.render && this.props.render(this.handleSubmit)}
         {loading && <p>...loading</p>}
         <div className="article-sort-order">
-          <SortSelect onChange={this.handleSortChange} sortValue={COMMENT_SORT_CHART[sort_by]} />
+          <SortSelect onChange={this.handleSortChange}
+            sortValue={COMMENT_SORT_CHART[sort_by]}
+            options={["date", "votes", "author"]} />
           <ToggleButton left={"desc"} right={"asc"} onClick={this.handleToggle} />
         </div>
         {comments && comments.map(comment => <Comment key={comment.comment_id} {...comment}>
