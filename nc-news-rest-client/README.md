@@ -18,7 +18,7 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 - Implement **`optimistic response`** for the vote button.
 
-- Applying **`slot pattern`** to avoid props drilling.
+- Applying **`slot pattern`** and **`ContextAPI`** to avoid props drilling.
 
 - Page-number style **`pagination`** implemented.
 

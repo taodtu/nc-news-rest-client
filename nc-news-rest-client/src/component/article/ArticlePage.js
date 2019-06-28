@@ -3,7 +3,8 @@ import { getArticle, getCommentsByArticle } from '../api';
 import Article from './Article';
 import CommentList from '../comment/CommentList';
 import AddComment from '../comment/AddComment';
-import ErrorMsg from '../error/Error'
+import ErrorMsg from '../error/Error';
+import { UserContext } from '../UserContext';
 
 const INITIAL_STATE = {
   article: null,
@@ -16,7 +17,7 @@ class ArticlePage extends Component {
   }
 
   render() {
-    const { id, currentUser } = this.props;
+    const { id } = this.props;
     const { loading, error, article } = this.state;
     if (error) return <ErrorMsg error={error} />
     return (
@@ -25,9 +26,11 @@ class ArticlePage extends Component {
         <h3>Article and Its Comments </h3>
         {article && <Article {...article} />}
         <hr />
-        <CommentList id={id} currentUser={currentUser} getComments={getCommentsByArticle}
-          render={handleSubmit => <AddComment onSubmit={handleSubmit} />}
-        />
+        <UserContext.Consumer>
+          {value => <CommentList id={id} currentUser={value} getComments={getCommentsByArticle}
+            render={handleSubmit => <AddComment onSubmit={handleSubmit} />}
+          />}
+        </UserContext.Consumer>
         <hr />
       </div>
     );

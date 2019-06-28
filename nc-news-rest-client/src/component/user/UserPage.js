@@ -5,28 +5,25 @@ import ToggleButton from '../button/ToggleButton'
 import ErrorMsg from '../error/Error';
 import ArticleList from '../article/ArticleList';
 import CommentList from '../comment/CommentList';
+import { UserContext } from '../UserContext';
 
 const INITIAL_STATE = {
   user: null,
   error: '',
   loading: false,
-  showArticleList: true
+  ShowList: "Articles",
 }
 class UserPage extends Component {
   state = {
     ...INITIAL_STATE
   }
   handleListToggle = (listName) => {
-    listName === "Articles"
-      ? this.setState({
-        showArticleList: true
-      })
-      : this.setState({
-        showArticleList: false
-      })
+    this.setState({
+      ShowList: listName
+    })
   }
   render() {
-    const { user, loading, error, showArticleList } = this.state;
+    const { user, loading, error, ShowList } = this.state;
     if (error) return <ErrorMsg error={error} />
     return (
       <div>
@@ -34,7 +31,11 @@ class UserPage extends Component {
         {loading && <p>...loading</p>}
         {user && <UserItem user={user} />}
         {user && <ToggleButton left={"Articles"} right={"Comments"} onClick={this.handleListToggle} />}
-        {user && (showArticleList ? <ArticleList author={user.username} /> : <CommentList id={user.username} currentUser={this.props.currentUser} getComments={getCommentsByUser} />)}
+        {user && (ShowList === "Articles" ? <ArticleList author={user.username} />
+          : <UserContext.Consumer>
+            {value => <CommentList id={user.username} currentUser={value} getComments={getCommentsByUser} />}
+          </UserContext.Consumer>
+        )}
       </div>
     );
   }
