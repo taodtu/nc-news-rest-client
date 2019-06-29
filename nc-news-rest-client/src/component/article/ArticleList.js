@@ -39,10 +39,10 @@ class ArticleList extends Component {
             sortValue={ARTICLE_SORT_CHART[sort_by]}
             options={["date", "votes", "author", "comments"]}
           />
-          <ToggleButton left={"desc"} right={"asc"} onClick={this.handleToggle} />
+          <ToggleButton left={"desc"} right={"asc"} onClick={this.handleClick} />
         </div>
         {articles && articles.articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
-        {articles && <Page pageTotal={Math.ceil(articles.total_count / limit)} onClick={this.handlePageClick} p={p} />}
+        {articles && <Page pageTotal={Math.ceil(articles.total_count / limit)} onClick={this.handleClick} p={p} />}
         <LimitSelect onChange={this.handleLimitChange} limit={limit} />
       </div>
     );
@@ -93,22 +93,23 @@ class ArticleList extends Component {
       sort_by: ARTICLE_SORT_CHART[value]
     })
   }
-  handleToggle = (order) => {
-    this.setState({
-      order
-    })
+  handleClick = (value) => {
+    isNaN(value)
+      ? this.setState({
+        order: value
+      })
+      : this.setState({
+        p: value
+      })
   }
+
   handleLimitChange = ({ target }) => {
     const { value } = target;
     this.setState({
       limit: value
     })
   }
-  handlePageClick = (pageNumber) => {
-    this.setState({
-      p: pageNumber
-    })
-  }
+
 }
 
 export default ArticleList;
