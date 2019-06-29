@@ -11,12 +11,6 @@ class Vote extends Component {
   state = {
     ...INITIAL_STATE
   }
-  voteUp = () => {
-    this.updateVote(1)
-  }
-  voteDown = () => {
-    this.updateVote(-1)
-  }
   updateVote = (change) => {
     this.setState(prev => ({
       ...INITIAL_STATE,
@@ -40,12 +34,12 @@ class Vote extends Component {
       <div className="vote-block">
         <div className="vote">
           <Button variant="outlined" size="small" color="primary" disabled={vote > 0}
-            onClick={this.voteUp}> + vote! </Button>
+            onClick={() => this.updateVote(1)}> + vote! </Button>
         </div>
         <p>Votes: {votes + vote}</p>
         <div className="vote">
           <Button variant="outlined" size="small" color="secondary" disabled={vote < 0}
-            onClick={this.voteDown}> - vote! </Button>
+            onClick={() => this.updateVote(-1)}> - vote! </Button>
         </div>
       </div>
     )

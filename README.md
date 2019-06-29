@@ -10,13 +10,15 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 - All the data manipulations on array and object are ensured **`not mutating`** the original data by using destructuring and spread operator. In addtional to fullfilling the northcoder project requirement, an UserPage is created for more advanced functionality.
 
-- Maximize **`component reuse`**, such as the voting button, toggle-button, article list, sort-select.
+- Maximize **`component reuse`**, such as the voting button, toggle-button, article list,comment-list, sort-select and handler functions.
 
 - Applying **`Render Props`** pattern to reuse the CommentList in both Article and User Page, where a AddComment is deployed inside of Article page which needs access to CommentList method. 
 
 - Applying **`slot pattern`** and **`ContextAPI`** to avoid props drilling.
 
 - Adopting **`Higher Order Component (HOC)`** pattern to wrap CommentList with **`Context.Consumer`** in both ArticlePage and UserPage for enhanced reusable component.
+
+- Use **`React Hooks`** to animate the title color change when mouse hove over it (click the title in mobile device).
 
 - Implement **`optimistic response`** for the vote button.
 
@@ -29,6 +31,10 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 - Styling with [@material/ui v4.1.3](https://material-ui.com/).
 
 - Routing with [@reach/router v1.1.0](https://reach.tech/router).
+
+- Fallback image handled with [react-image v2.1.3](https://www.npmjs.com/package/react-image).
+
+- Add loading spinner with [react-loader-spinner v2.30](https://www.npmjs.com/package/react-loader-spinner)
 
 ## Installation
 - git clone https://github.com/taodtu/nc-news-rest-client.git
