@@ -35,7 +35,7 @@ class ArticleList extends Component {
           width="100"
         />}
         <div className="article-sort-order">
-          <SortSelect onChange={this.handleSortChange}
+          <SortSelect onChange={this.handleChange}
             sortValue={ARTICLE_SORT_CHART[sort_by]}
             options={["date", "votes", "author", "comments"]}
           />
@@ -43,7 +43,7 @@ class ArticleList extends Component {
         </div>
         {articles && articles.articles.map(article => <ArticleItem key={article.article_id} article={article} />)}
         {articles && <Page pageTotal={Math.ceil(articles.total_count / limit)} onClick={this.handleClick} p={p} />}
-        <LimitSelect onChange={this.handleLimitChange} limit={limit} />
+        <LimitSelect onChange={this.handleChange} limit={limit} />
       </div>
     );
   }
@@ -87,11 +87,15 @@ class ArticleList extends Component {
         })
       })
   }
-  handleSortChange = ({ target }) => {
+  handleChange = ({ target }) => {
     const { value } = target;
-    this.setState({
-      sort_by: ARTICLE_SORT_CHART[value]
-    })
+    isNaN(value)
+      ? this.setState({
+        sort_by: ARTICLE_SORT_CHART[value]
+      })
+      : this.setState({
+        limit: value
+      })
   }
   handleClick = (value) => {
     isNaN(value)
@@ -102,14 +106,6 @@ class ArticleList extends Component {
         p: value
       })
   }
-
-  handleLimitChange = ({ target }) => {
-    const { value } = target;
-    this.setState({
-      limit: value
-    })
-  }
-
 }
 
 export default ArticleList;

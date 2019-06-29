@@ -10,7 +10,7 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 - All the data manipulations on array and object are ensured **`not mutating`** the original data by using destructuring and spread operator. In addtional to fullfilling the northcoder project requirement, an UserPage is created for more advanced functionality.
 
-- Maximize **`component reuse`**, such as the voting button, toggle-button, article list, sort-select.
+- Maximize **`component reuse`**, such as the voting button, toggle-button, article list,comment-list, sort-select and handler functions.
 
 - Applying **`Render Props`** pattern to reuse the CommentList in both Article and User Page, where a AddComment is deployed inside of Article page which needs access to CommentList method. 
 
