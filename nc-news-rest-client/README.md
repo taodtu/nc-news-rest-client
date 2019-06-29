@@ -18,6 +18,8 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 - Adopting **`Higher Order Component (HOC)`** pattern to wrap CommentList with **`Context.Consumer`** in both ArticlePage and UserPage for enhanced reusable component.
 
+- Use **`React Hooks`** to animate the title color change when mouse hove over it (click the title in mobile device).
+
 - Implement **`optimistic response`** for the vote button.
 
 - Page-number style **`pagination`** implemented.
@@ -30,7 +32,9 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 - Routing with [@reach/router v1.1.0](https://reach.tech/router).
 
-- Fallback image handled with [react-image v2.1.3](https://www.npmjs.com/package/react-image)
+- Fallback image handled with [react-image v2.1.3](https://www.npmjs.com/package/react-image).
+
+- Add loading spinner with [react-loader-spinner v2.30](https://www.npmjs.com/package/react-loader-spinner)
 
 ## Installation
 - git clone https://github.com/taodtu/nc-news-rest-client.git
