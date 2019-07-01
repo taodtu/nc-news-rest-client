@@ -6,13 +6,9 @@ class ToggleButton extends Component {
     onLeft: true
   }
   handleClick = (item) => {
-    item === this.props.left
-      ? this.setState({
-        onLeft: true
-      })
-      : this.setState({
-        onLeft: false
-      })
+    this.setState({
+      onLeft: item === this.props.left
+    })
     this.props.onClick(item)
   }
   render() {
